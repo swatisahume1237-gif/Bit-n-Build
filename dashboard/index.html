@@ -196,16 +196,32 @@ function haversineKm(lat1, lon1, lat2, lon2) {
 }
 
 async function main() {
-  const res = await fetch('data.json');
-  DATA = await res.json();
+  let data;
+  try {
+    const res = await fetch('data.json');
+    data = await res.json();
+  } catch (err) {
+    document.body.innerHTML = '<div style="color:#fff;padding:40px;font-family:sans-serif;">' +
+      'Could not load data.json. Make sure you ran python orchestrator.py first, ' +
+      'and are serving this folder over HTTP (not opening the file directly).</div>';
+    return;
+  }
 
-  renderPipeline(DATA.pipeline);
-  renderMap(DATA.matches);
-  renderDeals(DATA.matches);
-  renderStats(DATA.report);
-  renderNegotiations(DATA.negotiations);
-  renderFooter(DATA.report.notes);
-  populateSimForm(DATA.companies);
+  // Fix: assign the fetched data to the module-level DATA variable so
+  // runSimulation() (triggered later by a button click) can read it.
+  // Previously this was never assigned, and the render calls below
+  // referenced the never-set global "DATA" instead of the local "data",
+  // which threw "Uncaught ReferenceError: DATA is not defined" and stopped
+  // every render call below from ever running.
+  DATA = data;
+
+  renderPipeline(data.pipeline);
+  renderMap(data.matches);
+  renderDeals(data.matches);
+  renderStats(data.report);
+  renderNegotiations(data.negotiations);
+  renderFooter(data.report.notes);
+  populateSimForm(data.companies);
 }
 
 function renderPipeline(pipeline) {
