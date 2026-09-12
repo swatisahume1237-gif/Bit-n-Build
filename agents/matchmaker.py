@@ -1,4 +1,5 @@
 """
+Safety note: the hazard check below is a compatibility gate based on source-data flags only — it is not a substitute for real regulatory, transport, or handling-permit verification in an actual deployment.
 Matchmaking Agent
 ------------------
 Given normalized company profiles, finds candidate matches between a
