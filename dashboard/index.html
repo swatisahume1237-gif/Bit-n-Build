@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SymbioLoop — Industrial Symbiosis Agent Network</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; background: #0f1115; color: #e8e8e8; }
+  header { padding: 20px 28px; background: #14171f; border-bottom: 1px solid #262b36; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; color: #9aa4b2; font-size: 13px; }
+
+  /* --- Pipeline bar --- */
+  .pipeline { display: flex; align-items: center; gap: 0; padding: 14px 28px; background: #12141b; border-bottom: 1px solid #262b36; overflow-x: auto; }
+  .pipeline .stage { display: flex; flex-direction: column; align-items: center; min-width: 120px; text-align: center; }
+  .pipeline .stage .dot { width: 26px; height: 26px; border-radius: 50%; background: #16332a; border: 1px solid #2f6f57; color: #6ee7b7; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .pipeline .stage .name { font-size: 12px; font-weight: 600; margin-top: 6px; color: #e8e8e8; }
+  .pipeline .stage .detail { font-size: 11px; color: #9aa4b2; margin-top: 1px; }
+  .pipeline .arrow { flex: 0 0 auto; color: #384154; font-size: 18px; padding: 0 10px; margin-bottom: 22px; }
+
+  .layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; padding: 16px; }
+  .card { background: #171a22; border: 1px solid #262b36; border-radius: 10px; padding: 16px; }
+  #map { height: 460px; border-radius: 8px; }
+  .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 10px; }
+  .stat { background: #171a22; border: 1px solid #262b36; border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .value { font-size: 20px; font-weight: 700; color: #6ee7b7; }
+  .stat .label { font-size: 11px; color: #9aa4b2; margin-top: 4px; }
+  .note { font-size: 11px; color: #6d7688; margin: 2px 0 12px; line-height: 1.5; }
+  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: #9aa4b2; margin: 0 0 12px; }
+  .deal { border-bottom: 1px solid #262b36; padding: 10px 0; }
+  .deal:last-child { border-bottom: none; }
+  .deal .route { font-weight: 600; font-size: 13px; }
+  .deal .meta { font-size: 12px; color: #9aa4b2; margin-top: 2px; }
+  .deal .score { float: right; font-weight: 700; color: #6ee7b7; }
+  .negotiation { margin-bottom: 18px; border-bottom: 1px solid #1c2029; padding-bottom: 14px; }
+  .negotiation:last-child { border-bottom: none; }
+  .negotiation .title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .negotiation .title .badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: .03em; }
+  .badge.agreed { background: #16332a; color: #6ee7b7; border: 1px solid #2f6f57; }
+  .badge.failed { background: #3a1e22; color: #f2a3a3; border: 1px solid #7a3a3a; }
+  .badge.memory { background: #1e2a3a; color: #7db8f2; border: 1px solid #345a7a; }
+  .bubble { padding: 8px 12px; border-radius: 8px; margin: 4px 0; font-size: 12.5px; max-width: 90%; }
+  .supplier { background: #1f2a3a; margin-right: auto; }
+  .buyer { background: #2a2237; margin-left: auto; text-align: right; }
+  .agreement { background: #16332a; border: 1px solid #2f6f57; color: #6ee7b7; padding: 8px 12px; border-radius: 8px; margin-top: 6px; font-size: 12.5px; }
+  .agreement.failure { background: #3a1e22; border: 1px solid #7a3a3a; color: #f2a3a3; }
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr)); gap: 6px; margin-top: 6px; }
+  .terms-grid div { background: #0f1115; border: 1px solid #262b36; border-radius: 6px; padding: 6px 8px; font-size: 11px; }
+  .terms-grid .k { color: #9aa4b2; display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .03em; }
+  .full-width { grid-column: 1 / -1; }
+  footer { padding: 16px 28px 28px; color: #6d7688; font-size: 11px; line-height: 1.6; }
+
+  /* --- Run Simulation panel --- */
+  .sim-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 10px; align-items: end; }
+  .sim-form label { display: block; font-size: 11px; color: #9aa4b2; margin-bottom: 4px; }
+  .sim-form input, .sim-form select { width: 100%; background: #0f1115; border: 1px solid #262b36; color: #e8e8e8; border-radius: 6px; padding: 8px; font-size: 12.5px; }
+  .sim-form button { background: #2f6f57; color: #eafff5; border: none; border-radius: 6px; padding: 10px 14px; font-size: 12.5px; font-weight: 600; cursor: pointer; grid-column: span 1; }
+  .sim-form button:hover { background: #37876a; }
+  #simResults { margin-top: 14px; }
+  .sim-result { background: #0f1115; border: 1px solid #262b36; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; font-size: 12.5px; }
+  .sim-result .route { font-weight: 600; }
+  .sim-empty { color: #6d7688; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SymbioLoop — Industrial Symbiosis Agent Network</h1>
+  <p>Autonomous agents matching manufacturing byproducts to raw-material needs, negotiating deals, and quantifying circular-economy impact.</p>
+</header>
+
+<div class="pipeline" id="pipeline"></div>
+
+<div class="layout">
+  <div class="card">
+    <h2>Matched Symbiosis Routes</h2>
+    <div id="map"></div>
+  </div>
+
+  <div class="card">
+    <h2>Top Deals</h2>
+    <div id="deals"></div>
+  </div>
+
+  <div class="card full-width">
+    <h2>Network Impact</h2>
+    <div class="stats" id="stats"></div>
+    <div class="note" id="statsNote"></div>
+  </div>
+
+  <div class="card full-width">
+    <h2>Agent-to-Agent Negotiations</h2>
+    <div class="note">Matchmaking answers "can these two companies technically/safely work together?" Logistics answers "is this match economically/environmentally attractive?" Only negotiations with status <b>agreed</b> count toward the impact totals above — a negotiation that hits the turn limit or a genuine price-range mismatch counts as <b>failed</b>, not a deal.</div>
+    <div id="negotiations"></div>
+  </div>
+
+  <div class="card full-width">
+    <h2>Run Simulation — Add a Company</h2>
+    <div class="note">Client-side: mirrors the backend's matchmaking (category + hazard + quality compatibility), logistics, and scripted-negotiation logic against the companies already loaded, so you can try a "what if" without re-running the pipeline. This is a same-logic approximation, not a live call to the Python backend.</div>
+    <div class="sim-form">
+      <div>
+        <label>Company name</label>
+        <input id="simName" placeholder="e.g. Whitefield Foundry" />
+      </div>
+      <div>
+        <label>Role</label>
+        <select id="simRole"><option value="supplier">Supplier (has a byproduct)</option><option value="buyer">Buyer (has a need)</option></select>
+      </div>
+      <div>
+        <label>Material category</label>
+        <select id="simCategory"></select>
+      </div>
+      <div>
+        <label>Volume (tons/month)</label>
+        <input id="simVolume" type="number" value="500" />
+      </div>
+      <div>
+        <label id="simPriceLabel">Price bound (INR/ton)</label>
+        <input id="simPrice" type="number" value="1200" />
+      </div>
+      <div>
+        <label>Nearest city (for distance estimate)</label>
+        <select id="simCity"></select>
+      </div>
+      <div>
+        <label id="simHazardLabel">Is this byproduct hazardous?</label>
+        <select id="simHazard"><option value="false">No</option><option value="true">Yes</option></select>
+      </div>
+      <div>
+        <label id="simQualityLabel">Quality grade</label>
+        <select id="simQuality">
+          <option value="grade_A">Grade A</option>
+          <option value="grade_B">Grade B</option>
+          <option value="grade_C">Grade C</option>
+        </select>
+      </div>
+      <div>
+        <button onclick="runSimulation()">Run Simulation</button>
+      </div>
+    </div>
+    <div id="simResults"><div class="sim-empty">No simulation run yet.</div></div>
+  </div>
+</div>
+
+<footer id="footerNotes"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+let DATA = null;
+
+// ---- Constants mirrored from agents/logistics.py and agents/matchmaker.py, for the client-side simulation ----
+const TRUCK_COST_PER_TON_KM_INR = 3.5;
+const TRUCK_EMISSION_KG_CO2_PER_TON_KM = 0.062;
+const LANDFILL_DIVERSION_SAVING_TON_CO2E = 0.45;
+const VIABILITY_WEIGHTS = { fulfilment: 0.40, logistics: 0.20, co2: 0.15, quality: 0.25 };
+const QUALITY_HEADROOM = { grade_A: 1.0, grade_B: 0.66, grade_C: 0.33 };
+const MAX_REASONABLE_DISTANCE_KM = 500;
+
+// Mirrors agents/matchmaker.py::_quality_satisfies exactly - a hard
+// compatibility gate, not just a headroom score. A byproduct's quality_grade
+// must satisfy the need's quality_spec, same as the backend.
+function qualitySatisfies(spec, grade) {
+  if (spec === 'any') return true;
+  if (spec === 'grade_A_or_B') return grade === 'grade_A' || grade === 'grade_B';
+  return spec === grade;
+}
+
+// Mirrors agents/negotiator.py::compute_transport_split exactly, so the
+// dashboard never shows a transport split the backend wouldn't also produce.
+function computeTransportSplit(sellerMaxShare, buyerMaxShare) {
+  const sellerMaxPct = sellerMaxShare * 100;
+  const buyerMaxPct = buyerMaxShare * 100;
+  const lowerBound = Math.max(0, 100 - buyerMaxPct);
+  const upperBound = Math.min(100, sellerMaxPct);
+  let sellerShare;
+  if (lowerBound <= 50 && 50 <= upperBound) {
+    sellerShare = 50;
+  } else if (lowerBound <= upperBound) {
+    sellerShare = (lowerBound + upperBound) / 2;
+  } else {
+    sellerShare = (sellerMaxPct + (100 - buyerMaxPct)) / 2;
+  }
+  const sellerShareInt = Math.max(0, Math.min(100, Math.round(sellerShare)));
+  return `${sellerShareInt}/${100 - sellerShareInt}`;
+}
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const r = 6371.0;
+  const toRad = d => d * Math.PI / 180;
+  const dphi = toRad(lat2 - lat1), dlambda = toRad(lon2 - lon1);
+  const a = Math.sin(dphi/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dlambda/2)**2;
+  return 2 * r * Math.asin(Math.sqrt(a));
+}
+
+async function main() {
+  const res = await fetch('data.json');
+  DATA = await res.json();
+
+  renderPipeline(DATA.pipeline);
+  renderMap(DATA.matches);
+  renderDeals(DATA.matches);
+  renderStats(DATA.report);
+  renderNegotiations(DATA.negotiations);
+  renderFooter(DATA.report.notes);
+  populateSimForm(DATA.companies);
+}
+
+function renderPipeline(pipeline) {
+  const el = document.getElementById('pipeline');
+  if (!pipeline) { el.style.display = 'none'; return; }
+  el.innerHTML = pipeline.map((p, i) => `
+    <div class="stage">
+      <div class="dot">${i+1}</div>
+      <div class="name">${p.stage}</div>
+      <div class="detail">${p.detail}</div>
+    </div>
+    ${i < pipeline.length - 1 ? '<div class="arrow">&rarr;</div>' : ''}
+  `).join('');
+}
+
+function renderMap(matches) {
+  const map = L.map('map').setView([13.0, 77.6], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  matches.slice(0, 8).forEach(m => {
+    L.circleMarker([m.supplier_lat, m.supplier_lon], {radius:6, color:'#6ee7b7'}).addTo(map)
+      .bindPopup(`<b>${m.supplier_name}</b><br>Supplies: ${m.category}`);
+    L.circleMarker([m.buyer_lat, m.buyer_lon], {radius:6, color:'#a78bfa'}).addTo(map)
+      .bindPopup(`<b>${m.buyer_name}</b><br>Needs: ${m.category}`);
+    L.polyline([[m.supplier_lat, m.supplier_lon],[m.buyer_lat, m.buyer_lon]], {
+      color:'#6ee7b7', weight: Math.max(1, m.viability_score/25), opacity:0.6
+    }).addTo(map);
+  });
+}
+
+function renderDeals(matches) {
+  const dealsEl = document.getElementById('deals');
+  dealsEl.innerHTML = matches.slice(0, 8).map(m => `
+    <div class="deal">
+      <span class="score">${m.viability_score}/100</span>
+      <div class="route">${m.supplier_name} &rarr; ${m.buyer_name}</div>
+      <div class="meta">${m.category} · ~${m.distance_km} km estimated distance · ${Math.min(m.supply_volume_tons_month,m.demand_volume_tons_month)} t/mo</div>
+    </div>`).join('');
+}
+
+function inr(n) {
+  if (n === null || n === undefined) return '—';
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+function renderStats(r) {
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="value">${r.deals_agreed} / ${r.negotiations_attempted}</div><div class="label">Deals Agreed / Negotiated</div></div>
+    <div class="stat"><div class="value">${r.total_waste_diverted_tons_month}</div><div class="label">Tons/Month Diverted</div></div>
+    <div class="stat"><div class="value">${r.total_net_co2e_saved_ton_month}</div><div class="label">tCO2e Estimated Net Avoided/Month</div></div>
+    <div class="stat"><div class="value">${inr(r.total_buyer_savings_inr_per_month)}</div><div class="label">Buyer Savings/Month</div></div>
+    <div class="stat"><div class="value">${inr(r.total_supplier_savings_inr_per_month)}</div><div class="label">Supplier Savings (Disposal Avoided)/Month</div></div>
+    <div class="stat"><div class="value">${inr(r.total_economic_benefit_inr_per_month)}</div><div class="label">Total Economic Benefit/Month</div></div>
+  `;
+  document.getElementById('statsNote').innerHTML =
+    `${r.notes.co2e}<br>${r.notes.economics}`;
+}
+
+function renderNegotiations(negotiations) {
+  const negEl = document.getElementById('negotiations');
+  negEl.innerHTML = negotiations.map(n => {
+    const badgeClass = n.status === 'agreed' ? (n.mode === 'memory_reuse' ? 'memory' : 'agreed') : 'failed';
+    const badgeText = n.status === 'agreed' ? (n.mode === 'memory_reuse' ? 'Reused from memory' : 'Agreed') : 'Failed';
+
+    let html = `<div class="negotiation">
+      <div class="title">${n.supplier} &rarr; ${n.buyer} (${n.category}) <span class="badge ${badgeClass}">${badgeText}</span></div>`;
+
+    if (n.mode === 'memory_reuse') {
+      html += `<div class="note">${n.memory_note}</div>`;
+    } else {
+      (n.transcript || []).forEach(turn => {
+        const text = turn.text.replace(/AGREEMENT:[\s\S]*$/,'').replace(/NO_DEAL:.*$/,'').trim();
+        html += `<div class="bubble ${turn.speaker}">${text}</div>`;
+      });
+    }
+
+    if (n.status === 'agreed') {
+      html += `<div class="agreement">
+        Structured agreement
+        <div class="terms-grid">
+          <div><span class="k">Price</span>${inr(n.price_inr_per_ton)}/ton</div>
+          <div><span class="k">Volume</span>${n.volume_tons_month} t/mo</div>
+          <div><span class="k">Contract</span>${n.contract_months} months</div>
+          <div><span class="k">Delivery</span>${n.delivery_terms}</div>
+          <div><span class="k">Transport split</span>${n.transport_split}</div>
+        </div>
+      </div>`;
+    } else {
+      html += `<div class="agreement failure">No deal: ${n.failure_reason || 'unknown reason'}</div>`;
+    }
+    html += `</div>`;
+    return html;
+  }).join('');
+}
+
+function renderFooter(notes) {
+  document.getElementById('footerNotes').innerHTML = `
+    <b>Prototype disclaimers:</b> ${notes.data} ${notes.distance} ${notes.hazard}
+  `;
+}
+
+// ---- Run Simulation panel ----
+function populateSimForm(companies) {
+  const categories = new Set();
+  const cities = new Map();
+  companies.forEach(c => {
+    c.byproducts.forEach(b => categories.add(b.category));
+    c.needs.forEach(n => categories.add(n.category));
+    cities.set(c.city, {lat: c.lat, lon: c.lon});
+  });
+  document.getElementById('simCategory').innerHTML =
+    [...categories].sort().map(c => `<option value="${c}">${c}</option>`).join('');
+  document.getElementById('simCity').innerHTML =
+    [...cities.keys()].sort().map(c => `<option value="${c}">${c}</option>`).join('');
+
+  document.getElementById('simRole').addEventListener('change', (e) => {
+    updateRoleLabels(e.target.value);
+  });
+  updateRoleLabels(document.getElementById('simRole').value);
+}
+
+function updateRoleLabels(role) {
+  document.getElementById('simPriceLabel').textContent =
+    role === 'supplier' ? 'Minimum acceptable price (INR/ton)' : 'Maximum acceptable price (INR/ton)';
+  document.getElementById('simHazardLabel').textContent =
+    role === 'supplier' ? 'Is this byproduct hazardous?' : 'Does this need accept hazardous input?';
+  document.getElementById('simQualityLabel').textContent =
+    role === 'supplier' ? 'Quality grade supplied' : 'Quality spec required';
+
+  const qualityEl = document.getElementById('simQuality');
+  if (role === 'supplier') {
+    qualityEl.innerHTML = `
+      <option value="grade_A">Grade A</option>
+      <option value="grade_B">Grade B</option>
+      <option value="grade_C">Grade C</option>`;
+  } else {
+    qualityEl.innerHTML = `
+      <option value="any">Any grade accepted</option>
+      <option value="grade_A_or_B">Grade A or B</option>
+      <option value="grade_A">Grade A only</option>
+      <option value="grade_B">Grade B only</option>
+      <option value="grade_C">Grade C only</option>`;
+  }
+}
+
+function runSimulation() {
+  const name = document.getElementById('simName').value || 'New Company';
+  const role = document.getElementById('simRole').value;
+  const category = document.getElementById('simCategory').value;
+  const volume = parseFloat(document.getElementById('simVolume').value) || 0;
+  const price = parseFloat(document.getElementById('simPrice').value) || 0;
+  const cityName = document.getElementById('simCity').value;
+  const newHazardFlag = document.getElementById('simHazard').value === 'true'; // only meaningful if role === supplier
+  const newHazardAccepted = document.getElementById('simHazard').value === 'true'; // only meaningful if role === buyer
+  const newQualityGrade = document.getElementById('simQuality').value; // supplier: grade supplied
+  const newQualitySpec = document.getElementById('simQuality').value;  // buyer: spec required
+
+  const cities = {};
+  DATA.companies.forEach(c => { cities[c.city] = {lat: c.lat, lon: c.lon}; });
+  const origin = cities[cityName];
+
+  // --- Mirrors agents/matchmaker.py::MatchmakingAgent.find_matches exactly:
+  // category match -> hazard gate -> quality gate. A candidate that the
+  // backend would reject must also be rejected here, so the dashboard never
+  // shows a match ("Compatible") that the real Matchmaking Agent wouldn't.
+  const counterparts = [];
+  const rejected = { hazard: 0, quality: 0 };
+  DATA.companies.forEach(c => {
+    if (role === 'supplier') {
+      c.needs.forEach(n => {
+        if (n.category !== category) return;
+        if (newHazardFlag && !n.hazard_accepted) { rejected.hazard++; return; }
+        if (!qualitySatisfies(n.quality_spec, newQualityGrade)) { rejected.quality++; return; }
+        counterparts.push({company: c, item: n});
+      });
+    } else {
+      c.byproducts.forEach(b => {
+        if (b.category !== category) return;
+        if (b.hazard_flag && !newHazardAccepted) { rejected.hazard++; return; }
+        if (!qualitySatisfies(newQualitySpec, b.quality_grade)) { rejected.quality++; return; }
+        counterparts.push({company: c, item: b});
+      });
+    }
+  });
+
+  const resultsEl = document.getElementById('simResults');
+  if (counterparts.length === 0) {
+    let reason = `No compatible counterpart found for "${category}" in the loaded companies. (Matchmaking Agent: no candidate match.)`;
+    if (rejected.hazard || rejected.quality) {
+      const parts = [];
+      if (rejected.hazard) parts.push(`${rejected.hazard} rejected on hazard compatibility`);
+      if (rejected.quality) parts.push(`${rejected.quality} rejected on quality compatibility`);
+      reason = `No compatible counterpart for "${category}" once hazard/quality gates are applied (${parts.join(', ')}), even though category matched.`;
+    }
+    resultsEl.innerHTML = `<div class="sim-empty">${reason}</div>`;
+    return;
+  }
+
+  const results = counterparts.map(({company, item}) => {
+    const supplierLat = role === 'supplier' ? origin.lat : company.lat;
+    const supplierLon = role === 'supplier' ? origin.lon : company.lon;
+    const buyerLat = role === 'supplier' ? company.lat : origin.lat;
+    const buyerLon = role === 'supplier' ? company.lon : origin.lon;
+
+    const distanceKm = haversineKm(supplierLat, supplierLon, buyerLat, buyerLon);
+    const supplyVol = role === 'supplier' ? volume : item.volume_tons_month;
+    const demandVol = role === 'supplier' ? item.volume_tons_month : volume;
+    const dealVolume = Math.min(supplyVol, demandVol);
+
+    const transportEmissions = (distanceKm * dealVolume * TRUCK_EMISSION_KG_CO2_PER_TON_KM) / 1000;
+    const diversionSaving = dealVolume * LANDFILL_DIVERSION_SAVING_TON_CO2E;
+    const netCo2e = diversionSaving - transportEmissions;
+
+    const fulfilment = Math.min(supplyVol / demandVol, 1.0);
+    const logisticsComp = Math.max(0, 1 - distanceKm / MAX_REASONABLE_DISTANCE_KM);
+    const co2Comp = Math.max(0, Math.min(1, netCo2e / (diversionSaving || 1)));
+    const qualityGradeForScore = role === 'supplier' ? newQualityGrade : item.quality_grade;
+    const qualityComp = QUALITY_HEADROOM[qualityGradeForScore] ?? 0.5;
+    const viability = Math.round(100 * (
+      fulfilment * VIABILITY_WEIGHTS.fulfilment +
+      logisticsComp * VIABILITY_WEIGHTS.logistics +
+      co2Comp * VIABILITY_WEIGHTS.co2 +
+      qualityComp * VIABILITY_WEIGHTS.quality
+    ) * 10) / 10;
+
+    // --- Scripted negotiation: mirrors agents/negotiator.py::_scripted_negotiation
+    // exactly (midpoint + seller-preferred nudge, rounded to nearest 10; same
+    // explicit transport-split logic), not the simpler (min+max)/2 the old
+    // simulation used - so the settlement price shown here matches what the
+    // backend fallback would produce for the same inputs.
+    let sellerMin, sellerPref, buyerMax, sellerMaxShare, buyerMaxShare;
+    const DEFAULT_MAX_SHARE = 0.5;
+    if (role === 'supplier') {
+      sellerMin = price;
+      sellerPref = price; // the sim only collects one price bound for the new company
+      sellerMaxShare = DEFAULT_MAX_SHARE;
+      const ct = item.commercial_terms || {};
+      buyerMax = ct.maximum_price_inr_per_ton || 1600;
+      buyerMaxShare = ct.max_transport_share ?? DEFAULT_MAX_SHARE;
+    } else {
+      const ct = item.commercial_terms || {};
+      sellerMin = ct.minimum_price_inr_per_ton || 800;
+      sellerPref = ct.preferred_price_inr_per_ton || sellerMin;
+      sellerMaxShare = ct.max_transport_share ?? DEFAULT_MAX_SHARE;
+      buyerMax = price;
+      buyerMaxShare = DEFAULT_MAX_SHARE;
+    }
+
+    const transportSplit = computeTransportSplit(sellerMaxShare, buyerMaxShare);
+
+    let dealStatus, settlePrice = null, failureReason = null;
+    if (sellerMin > buyerMax) {
+      dealStatus = 'failed';
+      failureReason = `Seller minimum (${inr(sellerMin)}/ton) exceeds buyer maximum (${inr(buyerMax)}/ton).`;
+    } else {
+      dealStatus = 'agreed';
+      const midpoint = (sellerMin + buyerMax) / 2;
+      let settle = Math.min(buyerMax, Math.max(sellerMin, (midpoint + sellerPref) / 2));
+      settle = Math.round(settle / 10) * 10;
+      settlePrice = Math.max(sellerMin, Math.min(buyerMax, settle));
+    }
+
+    return {
+      companyName: company.name, city: company.city, distanceKm, dealVolume,
+      netCo2e, viability, dealStatus, settlePrice, failureReason, transportSplit
+    };
+  }).sort((a,b) => b.viability - a.viability);
+
+  resultsEl.innerHTML = results.slice(0, 5).map(r => {
+    const supplierName = role === 'supplier' ? name : r.companyName;
+    const buyerName = role === 'supplier' ? r.companyName : name;
+    const badgeClass = r.dealStatus === 'agreed' ? 'agreed' : 'failed';
+    const dealLine = r.dealStatus === 'agreed'
+      ? `Est. settlement ~${inr(r.settlePrice)}/ton · transport split ${r.transportSplit}`
+      : r.failureReason;
+    return `<div class="sim-result">
+      <div class="route">${supplierName} &rarr; ${buyerName} <span class="badge ${badgeClass}">${r.dealStatus}</span></div>
+      <div class="note" style="margin:4px 0 0;">${r.dealVolume} t/mo · ~${r.distanceKm.toFixed(1)} km estimated distance ·
+      viability ${r.viability}/100 · ~${r.netCo2e.toFixed(1)} tCO2e/mo net avoided (estimate) · ${dealLine}</div>
+    </div>`;
+  }).join('');
+}
+
+main();
+</script>
+</body>
+</html>

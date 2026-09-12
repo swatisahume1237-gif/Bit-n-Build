@@ -1,0 +1,1326 @@
+{
+  "companies_summary": {
+    "num_companies": 17,
+    "byproduct_streams": 11,
+    "need_streams": 10
+  },
+  "companies": [
+    {
+      "id": "C001",
+      "name": "Bengaluru Thermal Power Station",
+      "industry": "power_generation",
+      "city": "Bengaluru",
+      "lat": 12.9716,
+      "lon": 77.5946,
+      "byproducts": [
+        {
+          "category": "fly_ash",
+          "description": "Coal fly ash from boiler units",
+          "volume_tons_month": 4000,
+          "quality_grade": "grade_A",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 250,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 1600,
+            "preferred_price_inr_per_ton": 1900,
+            "minimum_volume_tons_month": 1600,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C002",
+      "name": "Deccan Cement Works",
+      "industry": "cement",
+      "city": "Bengaluru",
+      "lat": 13.0827,
+      "lon": 77.5877,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "fly_ash",
+          "description": "Fly ash as clinker substitute",
+          "volume_tons_month": 2500,
+          "quality_spec": "grade_A_or_B",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 1600,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 1472,
+            "required_volume_tons_month": 2500,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C003",
+      "name": "Karnataka Steel Rolling Mills",
+      "industry": "steel",
+      "city": "Bengaluru",
+      "lat": 12.9141,
+      "lon": 77.6411,
+      "byproducts": [
+        {
+          "category": "steel_slag",
+          "description": "Blast furnace slag",
+          "volume_tons_month": 1800,
+          "quality_grade": "grade_A",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 200,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 1000,
+            "preferred_price_inr_per_ton": 1150,
+            "minimum_volume_tons_month": 720,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        },
+        {
+          "category": "scrap_metal",
+          "description": "Mixed ferrous scrap offcuts",
+          "volume_tons_month": 300,
+          "quality_grade": "grade_B",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 100,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 504,
+            "preferred_price_inr_per_ton": 1716,
+            "minimum_volume_tons_month": 120,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C004",
+      "name": "Namma Roadworks Pvt Ltd",
+      "industry": "construction",
+      "city": "Bengaluru",
+      "lat": 12.9352,
+      "lon": 77.6245,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "steel_slag",
+          "description": "Aggregate substitute for road base",
+          "volume_tons_month": 1200,
+          "quality_spec": "grade_A_or_B",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 1200,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 1050,
+            "required_volume_tons_month": 1200,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        },
+        {
+          "category": "foundry_sand",
+          "description": "Used foundry sand for sub-base",
+          "volume_tons_month": 600,
+          "quality_spec": "any",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 900,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 828,
+            "required_volume_tons_month": 600,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C005",
+      "name": "Precision Auto Foundry",
+      "industry": "foundry",
+      "city": "Hosur",
+      "lat": 12.7409,
+      "lon": 77.8253,
+      "byproducts": [
+        {
+          "category": "foundry_sand",
+          "description": "Spent moulding sand",
+          "volume_tons_month": 700,
+          "quality_grade": "grade_B",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 150,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 294,
+            "preferred_price_inr_per_ton": 702,
+            "minimum_volume_tons_month": 280,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        },
+        {
+          "category": "scrap_metal",
+          "description": "Metal turnings and rejects",
+          "volume_tons_month": 150,
+          "quality_grade": "grade_B",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 100,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 504,
+            "preferred_price_inr_per_ton": 1716,
+            "minimum_volume_tons_month": 60,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C006",
+      "name": "Coastal Recyclers Ltd",
+      "industry": "recycling",
+      "city": "Chennai",
+      "lat": 13.0827,
+      "lon": 80.2707,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "scrap_metal",
+          "description": "Ferrous scrap for smelting feedstock",
+          "volume_tons_month": 500,
+          "quality_spec": "any",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 2200,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 2024,
+            "required_volume_tons_month": 500,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C007",
+      "name": "Cauvery Sugar Mills",
+      "industry": "sugar",
+      "city": "Mandya",
+      "lat": 12.5242,
+      "lon": 76.8958,
+      "byproducts": [
+        {
+          "category": "biomass_bagasse",
+          "description": "Sugarcane bagasse fibre",
+          "volume_tons_month": 3200,
+          "quality_grade": "grade_A",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 100,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 446,
+            "preferred_price_inr_per_ton": 1482,
+            "minimum_volume_tons_month": 1280,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        },
+        {
+          "category": "molasses_residue",
+          "description": "Distillery spent wash",
+          "volume_tons_month": 900,
+          "quality_grade": "grade_B",
+          "hazard_flag": true,
+          "disposal_cost_inr_per_ton": 350,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 475,
+            "preferred_price_inr_per_ton": 550,
+            "minimum_volume_tons_month": 360,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C008",
+      "name": "GreenVolt Biomass Power",
+      "industry": "power_generation",
+      "city": "Mysuru",
+      "lat": 12.2958,
+      "lon": 76.6394,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "biomass_bagasse",
+          "description": "Biomass feedstock for boilers",
+          "volume_tons_month": 2800,
+          "quality_spec": "grade_A_or_B",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 1900,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 1748,
+            "required_volume_tons_month": 2800,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C009",
+      "name": "Suvarna Biogas Energy",
+      "industry": "biogas",
+      "city": "Mandya",
+      "lat": 12.5686,
+      "lon": 76.8961,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "molasses_residue",
+          "description": "Organic residue feedstock for anaerobic digestion",
+          "volume_tons_month": 800,
+          "quality_spec": "any",
+          "hazard_accepted": true,
+          "virgin_material_cost_inr_per_ton": 1000,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 920,
+            "required_volume_tons_month": 800,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C010",
+      "name": "Malnad Timber & Furniture",
+      "industry": "woodworking",
+      "city": "Shivamogga",
+      "lat": 13.9299,
+      "lon": 75.5681,
+      "byproducts": [
+        {
+          "category": "sawdust",
+          "description": "Sawdust and wood shavings",
+          "volume_tons_month": 450,
+          "quality_grade": "grade_A",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 80,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 276,
+            "preferred_price_inr_per_ton": 858,
+            "minimum_volume_tons_month": 180,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C011",
+      "name": "Kaveri Particle Board Co",
+      "industry": "manufacturing",
+      "city": "Shivamogga",
+      "lat": 13.9098,
+      "lon": 75.554,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "sawdust",
+          "description": "Sawdust as raw material for particle board",
+          "volume_tons_month": 400,
+          "quality_spec": "grade_A",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 1100,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 1012,
+            "required_volume_tons_month": 400,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C012",
+      "name": "Indus Leather Tannery",
+      "industry": "leather",
+      "city": "Vellore",
+      "lat": 12.9165,
+      "lon": 79.1325,
+      "byproducts": [
+        {
+          "category": "chromium_sludge",
+          "description": "Chrome-tanning sludge",
+          "volume_tons_month": 220,
+          "quality_grade": "grade_C",
+          "hazard_flag": true,
+          "disposal_cost_inr_per_ton": 600,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 658,
+            "preferred_price_inr_per_ton": 495,
+            "minimum_volume_tons_month": 88,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C013",
+      "name": "TN Hazardous Waste Processing Unit",
+      "industry": "waste_management",
+      "city": "Vellore",
+      "lat": 12.901,
+      "lon": 79.156,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "chromium_sludge",
+          "description": "Chrome sludge for recovery processing",
+          "volume_tons_month": 200,
+          "quality_spec": "any",
+          "hazard_accepted": true,
+          "virgin_material_cost_inr_per_ton": 900,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 828,
+            "required_volume_tons_month": 200,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C014",
+      "name": "Nandi Breweries",
+      "industry": "brewery",
+      "city": "Bengaluru",
+      "lat": 12.9698,
+      "lon": 77.75,
+      "byproducts": [
+        {
+          "category": "spent_grain",
+          "description": "Brewer's spent grain",
+          "volume_tons_month": 380,
+          "quality_grade": "grade_A",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 90,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 342,
+            "preferred_price_inr_per_ton": 1092,
+            "minimum_volume_tons_month": 152,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    },
+    {
+      "id": "C015",
+      "name": "Golden Feather Poultry Feed",
+      "industry": "animal_feed",
+      "city": "Bengaluru",
+      "lat": 12.8452,
+      "lon": 77.6602,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "spent_grain",
+          "description": "Spent grain as animal feed supplement",
+          "volume_tons_month": 350,
+          "quality_spec": "grade_A_or_B",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 1400,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 1288,
+            "required_volume_tons_month": 350,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C016",
+      "name": "Vega Gypsum Board Industries",
+      "industry": "manufacturing",
+      "city": "Tumakuru",
+      "lat": 13.3392,
+      "lon": 77.114,
+      "byproducts": [],
+      "needs": [
+        {
+          "category": "fgd_gypsum",
+          "description": "Synthetic gypsum for plasterboard",
+          "volume_tons_month": 900,
+          "quality_spec": "grade_A_or_B",
+          "hazard_accepted": false,
+          "virgin_material_cost_inr_per_ton": 1300,
+          "commercial_terms": {
+            "maximum_price_inr_per_ton": 1196,
+            "required_volume_tons_month": 900,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "C017",
+      "name": "Tumkur Chemical Industries",
+      "industry": "chemicals",
+      "city": "Tumakuru",
+      "lat": 13.326,
+      "lon": 77.1005,
+      "byproducts": [
+        {
+          "category": "fgd_gypsum",
+          "description": "FGD gypsum byproduct from scrubber unit",
+          "volume_tons_month": 950,
+          "quality_grade": "grade_A",
+          "hazard_flag": false,
+          "disposal_cost_inr_per_ton": 180,
+          "commercial_terms": {
+            "minimum_price_inr_per_ton": 396,
+            "preferred_price_inr_per_ton": 1014,
+            "minimum_volume_tons_month": 380,
+            "preferred_contract_months": 12,
+            "max_transport_share": 0.5
+          }
+        }
+      ],
+      "needs": []
+    }
+  ],
+  "matches": [
+    {
+      "supplier_id": "C003",
+      "supplier_name": "Karnataka Steel Rolling Mills",
+      "supplier_city": "Bengaluru",
+      "supplier_lat": 12.9141,
+      "supplier_lon": 77.6411,
+      "buyer_id": "C004",
+      "buyer_name": "Namma Roadworks Pvt Ltd",
+      "buyer_city": "Bengaluru",
+      "buyer_lat": 12.9352,
+      "buyer_lon": 77.6245,
+      "category": "steel_slag",
+      "byproduct_description": "Blast furnace slag",
+      "need_description": "Aggregate substitute for road base",
+      "supply_volume_tons_month": 1800,
+      "demand_volume_tons_month": 1200,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_A",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 1000,
+        "preferred_price_inr_per_ton": 1150,
+        "minimum_volume_tons_month": 720,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 1050,
+        "required_volume_tons_month": 1200,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 200,
+      "virgin_material_cost_inr_per_ton": 1200,
+      "distance_km": 3.0,
+      "transport_cost_inr_per_month": 12418.0,
+      "transport_emissions_ton_co2e_month": 0.22,
+      "net_co2e_saved_ton_month": 539.78,
+      "viability_score": 99.9,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 99.4,
+        "co2_benefit_pct": 100.0,
+        "match_quality_pct": 100.0
+      }
+    },
+    {
+      "supplier_id": "C010",
+      "supplier_name": "Malnad Timber & Furniture",
+      "supplier_city": "Shivamogga",
+      "supplier_lat": 13.9299,
+      "supplier_lon": 75.5681,
+      "buyer_id": "C011",
+      "buyer_name": "Kaveri Particle Board Co",
+      "buyer_city": "Shivamogga",
+      "buyer_lat": 13.9098,
+      "buyer_lon": 75.554,
+      "category": "sawdust",
+      "byproduct_description": "Sawdust and wood shavings",
+      "need_description": "Sawdust as raw material for particle board",
+      "supply_volume_tons_month": 450,
+      "demand_volume_tons_month": 400,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_A",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 276,
+        "preferred_price_inr_per_ton": 858,
+        "minimum_volume_tons_month": 180,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 1012,
+        "required_volume_tons_month": 400,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 80,
+      "virgin_material_cost_inr_per_ton": 1100,
+      "distance_km": 2.7,
+      "transport_cost_inr_per_month": 3785.0,
+      "transport_emissions_ton_co2e_month": 0.07,
+      "net_co2e_saved_ton_month": 179.93,
+      "viability_score": 99.9,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 99.5,
+        "co2_benefit_pct": 100.0,
+        "match_quality_pct": 100.0
+      }
+    },
+    {
+      "supplier_id": "C017",
+      "supplier_name": "Tumkur Chemical Industries",
+      "supplier_city": "Tumakuru",
+      "supplier_lat": 13.326,
+      "supplier_lon": 77.1005,
+      "buyer_id": "C016",
+      "buyer_name": "Vega Gypsum Board Industries",
+      "buyer_city": "Tumakuru",
+      "buyer_lat": 13.3392,
+      "buyer_lon": 77.114,
+      "category": "fgd_gypsum",
+      "byproduct_description": "FGD gypsum byproduct from scrubber unit",
+      "need_description": "Synthetic gypsum for plasterboard",
+      "supply_volume_tons_month": 950,
+      "demand_volume_tons_month": 900,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_A",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 396,
+        "preferred_price_inr_per_ton": 1014,
+        "minimum_volume_tons_month": 380,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 1196,
+        "required_volume_tons_month": 900,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 180,
+      "virgin_material_cost_inr_per_ton": 1300,
+      "distance_km": 2.1,
+      "transport_cost_inr_per_month": 6523.0,
+      "transport_emissions_ton_co2e_month": 0.12,
+      "net_co2e_saved_ton_month": 404.88,
+      "viability_score": 99.9,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 99.6,
+        "co2_benefit_pct": 100.0,
+        "match_quality_pct": 100.0
+      }
+    },
+    {
+      "supplier_id": "C001",
+      "supplier_name": "Bengaluru Thermal Power Station",
+      "supplier_city": "Bengaluru",
+      "supplier_lat": 12.9716,
+      "supplier_lon": 77.5946,
+      "buyer_id": "C002",
+      "buyer_name": "Deccan Cement Works",
+      "buyer_city": "Bengaluru",
+      "buyer_lat": 13.0827,
+      "buyer_lon": 77.5877,
+      "category": "fly_ash",
+      "byproduct_description": "Coal fly ash from boiler units",
+      "need_description": "Fly ash as clinker substitute",
+      "supply_volume_tons_month": 4000,
+      "demand_volume_tons_month": 2500,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_A",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 1600,
+        "preferred_price_inr_per_ton": 1900,
+        "minimum_volume_tons_month": 1600,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 1472,
+        "required_volume_tons_month": 2500,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 250,
+      "virgin_material_cost_inr_per_ton": 1600,
+      "distance_km": 12.4,
+      "transport_cost_inr_per_month": 108293.0,
+      "transport_emissions_ton_co2e_month": 1.92,
+      "net_co2e_saved_ton_month": 1123.08,
+      "viability_score": 99.5,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 97.5,
+        "co2_benefit_pct": 99.8,
+        "match_quality_pct": 100.0
+      }
+    },
+    {
+      "supplier_id": "C014",
+      "supplier_name": "Nandi Breweries",
+      "supplier_city": "Bengaluru",
+      "supplier_lat": 12.9698,
+      "supplier_lon": 77.75,
+      "buyer_id": "C015",
+      "buyer_name": "Golden Feather Poultry Feed",
+      "buyer_city": "Bengaluru",
+      "buyer_lat": 12.8452,
+      "buyer_lon": 77.6602,
+      "category": "spent_grain",
+      "byproduct_description": "Brewer's spent grain",
+      "need_description": "Spent grain as animal feed supplement",
+      "supply_volume_tons_month": 380,
+      "demand_volume_tons_month": 350,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_A",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 342,
+        "preferred_price_inr_per_ton": 1092,
+        "minimum_volume_tons_month": 152,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 1288,
+        "required_volume_tons_month": 350,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 90,
+      "virgin_material_cost_inr_per_ton": 1400,
+      "distance_km": 16.9,
+      "transport_cost_inr_per_month": 20742.0,
+      "transport_emissions_ton_co2e_month": 0.37,
+      "net_co2e_saved_ton_month": 157.13,
+      "viability_score": 99.3,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 96.6,
+        "co2_benefit_pct": 99.8,
+        "match_quality_pct": 100.0
+      }
+    },
+    {
+      "supplier_id": "C007",
+      "supplier_name": "Cauvery Sugar Mills",
+      "supplier_city": "Mandya",
+      "supplier_lat": 12.5242,
+      "supplier_lon": 76.8958,
+      "buyer_id": "C008",
+      "buyer_name": "GreenVolt Biomass Power",
+      "buyer_city": "Mysuru",
+      "buyer_lat": 12.2958,
+      "buyer_lon": 76.6394,
+      "category": "biomass_bagasse",
+      "byproduct_description": "Sugarcane bagasse fibre",
+      "need_description": "Biomass feedstock for boilers",
+      "supply_volume_tons_month": 3200,
+      "demand_volume_tons_month": 2800,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_A",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 446,
+        "preferred_price_inr_per_ton": 1482,
+        "minimum_volume_tons_month": 1280,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 1748,
+        "required_volume_tons_month": 2800,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 100,
+      "virgin_material_cost_inr_per_ton": 1900,
+      "distance_km": 37.7,
+      "transport_cost_inr_per_month": 369332.0,
+      "transport_emissions_ton_co2e_month": 6.54,
+      "net_co2e_saved_ton_month": 1253.46,
+      "viability_score": 98.4,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 92.5,
+        "co2_benefit_pct": 99.5,
+        "match_quality_pct": 100.0
+      }
+    },
+    {
+      "supplier_id": "C007",
+      "supplier_name": "Cauvery Sugar Mills",
+      "supplier_city": "Mandya",
+      "supplier_lat": 12.5242,
+      "supplier_lon": 76.8958,
+      "buyer_id": "C009",
+      "buyer_name": "Suvarna Biogas Energy",
+      "buyer_city": "Mandya",
+      "buyer_lat": 12.5686,
+      "buyer_lon": 76.8961,
+      "category": "molasses_residue",
+      "byproduct_description": "Distillery spent wash",
+      "need_description": "Organic residue feedstock for anaerobic digestion",
+      "supply_volume_tons_month": 900,
+      "demand_volume_tons_month": 800,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_B",
+      "hazardous": true,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 475,
+        "preferred_price_inr_per_ton": 550,
+        "minimum_volume_tons_month": 360,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 920,
+        "required_volume_tons_month": 800,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 350,
+      "virgin_material_cost_inr_per_ton": 1000,
+      "distance_km": 4.9,
+      "transport_cost_inr_per_month": 13824.0,
+      "transport_emissions_ton_co2e_month": 0.24,
+      "net_co2e_saved_ton_month": 359.76,
+      "viability_score": 91.3,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 99.0,
+        "co2_benefit_pct": 99.9,
+        "match_quality_pct": 66.0
+      }
+    },
+    {
+      "supplier_id": "C005",
+      "supplier_name": "Precision Auto Foundry",
+      "supplier_city": "Hosur",
+      "supplier_lat": 12.7409,
+      "supplier_lon": 77.8253,
+      "buyer_id": "C004",
+      "buyer_name": "Namma Roadworks Pvt Ltd",
+      "buyer_city": "Bengaluru",
+      "buyer_lat": 12.9352,
+      "buyer_lon": 77.6245,
+      "category": "foundry_sand",
+      "byproduct_description": "Spent moulding sand",
+      "need_description": "Used foundry sand for sub-base",
+      "supply_volume_tons_month": 700,
+      "demand_volume_tons_month": 600,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_B",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 294,
+        "preferred_price_inr_per_ton": 702,
+        "minimum_volume_tons_month": 280,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 828,
+        "required_volume_tons_month": 600,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 150,
+      "virgin_material_cost_inr_per_ton": 900,
+      "distance_km": 30.7,
+      "transport_cost_inr_per_month": 64409.0,
+      "transport_emissions_ton_co2e_month": 1.14,
+      "net_co2e_saved_ton_month": 268.86,
+      "viability_score": 90.2,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 93.9,
+        "co2_benefit_pct": 99.6,
+        "match_quality_pct": 66.0
+      }
+    },
+    {
+      "supplier_id": "C012",
+      "supplier_name": "Indus Leather Tannery",
+      "supplier_city": "Vellore",
+      "supplier_lat": 12.9165,
+      "supplier_lon": 79.1325,
+      "buyer_id": "C013",
+      "buyer_name": "TN Hazardous Waste Processing Unit",
+      "buyer_city": "Vellore",
+      "buyer_lat": 12.901,
+      "buyer_lon": 79.156,
+      "category": "chromium_sludge",
+      "byproduct_description": "Chrome-tanning sludge",
+      "need_description": "Chrome sludge for recovery processing",
+      "supply_volume_tons_month": 220,
+      "demand_volume_tons_month": 200,
+      "fulfilment_ratio": 1.0,
+      "quality_grade": "grade_C",
+      "hazardous": true,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 658,
+        "preferred_price_inr_per_ton": 495,
+        "minimum_volume_tons_month": 88,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 828,
+        "required_volume_tons_month": 200,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 600,
+      "virgin_material_cost_inr_per_ton": 900,
+      "distance_km": 3.1,
+      "transport_cost_inr_per_month": 2153.0,
+      "transport_emissions_ton_co2e_month": 0.04,
+      "net_co2e_saved_ton_month": 89.96,
+      "viability_score": 83.1,
+      "viability_breakdown": {
+        "fulfilment_pct": 100.0,
+        "logistics_pct": 99.4,
+        "co2_benefit_pct": 100.0,
+        "match_quality_pct": 33.0
+      }
+    },
+    {
+      "supplier_id": "C003",
+      "supplier_name": "Karnataka Steel Rolling Mills",
+      "supplier_city": "Bengaluru",
+      "supplier_lat": 12.9141,
+      "supplier_lon": 77.6411,
+      "buyer_id": "C006",
+      "buyer_name": "Coastal Recyclers Ltd",
+      "buyer_city": "Chennai",
+      "buyer_lat": 13.0827,
+      "buyer_lon": 80.2707,
+      "category": "scrap_metal",
+      "byproduct_description": "Mixed ferrous scrap offcuts",
+      "need_description": "Ferrous scrap for smelting feedstock",
+      "supply_volume_tons_month": 300,
+      "demand_volume_tons_month": 500,
+      "fulfilment_ratio": 0.6,
+      "quality_grade": "grade_B",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 504,
+        "preferred_price_inr_per_ton": 1716,
+        "minimum_volume_tons_month": 120,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 2024,
+        "required_volume_tons_month": 500,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 100,
+      "virgin_material_cost_inr_per_ton": 2200,
+      "distance_km": 285.5,
+      "transport_cost_inr_per_month": 299797.0,
+      "transport_emissions_ton_co2e_month": 5.31,
+      "net_co2e_saved_ton_month": 129.69,
+      "viability_score": 63.5,
+      "viability_breakdown": {
+        "fulfilment_pct": 60.0,
+        "logistics_pct": 42.9,
+        "co2_benefit_pct": 96.1,
+        "match_quality_pct": 66.0
+      }
+    },
+    {
+      "supplier_id": "C005",
+      "supplier_name": "Precision Auto Foundry",
+      "supplier_city": "Hosur",
+      "supplier_lat": 12.7409,
+      "supplier_lon": 77.8253,
+      "buyer_id": "C006",
+      "buyer_name": "Coastal Recyclers Ltd",
+      "buyer_city": "Chennai",
+      "buyer_lat": 13.0827,
+      "buyer_lon": 80.2707,
+      "category": "scrap_metal",
+      "byproduct_description": "Metal turnings and rejects",
+      "need_description": "Ferrous scrap for smelting feedstock",
+      "supply_volume_tons_month": 150,
+      "demand_volume_tons_month": 500,
+      "fulfilment_ratio": 0.3,
+      "quality_grade": "grade_B",
+      "hazardous": false,
+      "seller_terms": {
+        "minimum_price_inr_per_ton": 504,
+        "preferred_price_inr_per_ton": 1716,
+        "minimum_volume_tons_month": 60,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "buyer_terms": {
+        "maximum_price_inr_per_ton": 2024,
+        "required_volume_tons_month": 500,
+        "preferred_contract_months": 12,
+        "max_transport_share": 0.5
+      },
+      "disposal_cost_inr_per_ton": 100,
+      "virgin_material_cost_inr_per_ton": 2200,
+      "distance_km": 267.8,
+      "transport_cost_inr_per_month": 140569.0,
+      "transport_emissions_ton_co2e_month": 2.49,
+      "net_co2e_saved_ton_month": 65.01,
+      "viability_score": 52.2,
+      "viability_breakdown": {
+        "fulfilment_pct": 30.0,
+        "logistics_pct": 46.4,
+        "co2_benefit_pct": 96.3,
+        "match_quality_pct": 66.0
+      }
+    }
+  ],
+  "negotiations": [
+    {
+      "match_id": "C003->C004:steel_slag",
+      "supplier": "Karnataka Steel Rolling Mills",
+      "buyer": "Namma Roadworks Pvt Ltd",
+      "category": "steel_slag",
+      "timestamp": "2026-09-12T08:33:52.735145+00:00",
+      "transcript": [
+        {
+          "speaker": "supplier",
+          "text": "We can offer 1200 tons/month of steel_slag at INR 1150/ton, recurring monthly, delivery from our site."
+        },
+        {
+          "speaker": "buyer",
+          "text": "That's above our target. We can do INR 850/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
+        },
+        {
+          "speaker": "supplier",
+          "text": "Acceptable at INR 1050/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 1050, \"volume_tons_month\": 1200, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
+        },
+        {
+          "speaker": "buyer",
+          "text": "CONFIRMED: agreed to the terms above."
+        }
+      ],
+      "status": "agreed",
+      "mode": "scripted_fallback",
+      "price_inr_per_ton": 1050,
+      "volume_tons_month": 1200,
+      "contract_months": 12,
+      "delivery_terms": "supplier site",
+      "transport_split": "50/50",
+      "started_at": "2026-09-12T08:33:52.735159+00:00",
+      "expires_at": "2027-09-07T08:33:52.735159+00:00"
+    },
+    {
+      "match_id": "C010->C011:sawdust",
+      "supplier": "Malnad Timber & Furniture",
+      "buyer": "Kaveri Particle Board Co",
+      "category": "sawdust",
+      "timestamp": "2026-09-12T08:33:52.735442+00:00",
+      "transcript": [
+        {
+          "speaker": "supplier",
+          "text": "We can offer 400 tons/month of sawdust at INR 858/ton, recurring monthly, delivery from our site."
+        },
+        {
+          "speaker": "buyer",
+          "text": "That's above our target. We can do INR 810/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
+        },
+        {
+          "speaker": "supplier",
+          "text": "Acceptable at INR 750/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 750, \"volume_tons_month\": 400, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
+        },
+        {
+          "speaker": "buyer",
+          "text": "CONFIRMED: agreed to the terms above."
+        }
+      ],
+      "status": "agreed",
+      "mode": "scripted_fallback",
+      "price_inr_per_ton": 750,
+      "volume_tons_month": 400,
+      "contract_months": 12,
+      "delivery_terms": "supplier site",
+      "transport_split": "50/50",
+      "started_at": "2026-09-12T08:33:52.735448+00:00",
+      "expires_at": "2027-09-07T08:33:52.735448+00:00"
+    },
+    {
+      "match_id": "C017->C016:fgd_gypsum",
+      "supplier": "Tumkur Chemical Industries",
+      "buyer": "Vega Gypsum Board Industries",
+      "category": "fgd_gypsum",
+      "timestamp": "2026-09-12T08:33:52.735766+00:00",
+      "transcript": [
+        {
+          "speaker": "supplier",
+          "text": "We can offer 900 tons/month of fgd_gypsum at INR 1014/ton, recurring monthly, delivery from our site."
+        },
+        {
+          "speaker": "buyer",
+          "text": "That's above our target. We can do INR 957/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
+        },
+        {
+          "speaker": "supplier",
+          "text": "Acceptable at INR 900/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 900, \"volume_tons_month\": 900, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
+        },
+        {
+          "speaker": "buyer",
+          "text": "CONFIRMED: agreed to the terms above."
+        }
+      ],
+      "status": "agreed",
+      "mode": "scripted_fallback",
+      "price_inr_per_ton": 900,
+      "volume_tons_month": 900,
+      "contract_months": 12,
+      "delivery_terms": "supplier site",
+      "transport_split": "50/50",
+      "started_at": "2026-09-12T08:33:52.735774+00:00",
+      "expires_at": "2027-09-07T08:33:52.735774+00:00"
+    },
+    {
+      "match_id": "C001->C002:fly_ash",
+      "supplier": "Bengaluru Thermal Power Station",
+      "buyer": "Deccan Cement Works",
+      "category": "fly_ash",
+      "timestamp": "2026-09-12T08:33:52.736299+00:00",
+      "transcript": [
+        {
+          "speaker": "supplier",
+          "text": "Our minimum for fly_ash is INR 1600/ton given our disposal-avoidance economics."
+        },
+        {
+          "speaker": "buyer",
+          "text": "We can't go above INR 1472/ton against our virgin-material benchmark. That gap doesn't close for us."
+        },
+        {
+          "speaker": "supplier",
+          "text": "Understood - INR 1472/ton is below what we can accept. NO_DEAL: price ranges do not overlap."
+        }
+      ],
+      "status": "failed",
+      "failure_reason": "Seller minimum (INR 1600/ton) exceeds buyer maximum (INR 1472/ton).",
+      "mode": "scripted_fallback"
+    },
+    {
+      "match_id": "C014->C015:spent_grain",
+      "supplier": "Nandi Breweries",
+      "buyer": "Golden Feather Poultry Feed",
+      "category": "spent_grain",
+      "timestamp": "2026-09-12T08:33:52.736758+00:00",
+      "transcript": [
+        {
+          "speaker": "supplier",
+          "text": "We can offer 350 tons/month of spent_grain at INR 1092/ton, recurring monthly, delivery from our site."
+        },
+        {
+          "speaker": "buyer",
+          "text": "That's above our target. We can do INR 1030/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
+        },
+        {
+          "speaker": "supplier",
+          "text": "Acceptable at INR 950/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 950, \"volume_tons_month\": 350, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
+        },
+        {
+          "speaker": "buyer",
+          "text": "CONFIRMED: agreed to the terms above."
+        }
+      ],
+      "status": "agreed",
+      "mode": "scripted_fallback",
+      "price_inr_per_ton": 950,
+      "volume_tons_month": 350,
+      "contract_months": 12,
+      "delivery_terms": "supplier site",
+      "transport_split": "50/50",
+      "started_at": "2026-09-12T08:33:52.736765+00:00",
+      "expires_at": "2027-09-07T08:33:52.736765+00:00"
+    },
+    {
+      "match_id": "C007->C008:biomass_bagasse",
+      "supplier": "Cauvery Sugar Mills",
+      "buyer": "GreenVolt Biomass Power",
+      "category": "biomass_bagasse",
+      "timestamp": "2026-09-12T08:33:52.737234+00:00",
+      "transcript": [
+        {
+          "speaker": "supplier",
+          "text": "We can offer 2800 tons/month of biomass_bagasse at INR 1482/ton, recurring monthly, delivery from our site."
+        },
+        {
+          "speaker": "buyer",
+          "text": "That's above our target. We can do INR 1398/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
+        },
+        {
+          "speaker": "supplier",
+          "text": "Acceptable at INR 1290/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 1290, \"volume_tons_month\": 2800, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
+        },
+        {
+          "speaker": "buyer",
+          "text": "CONFIRMED: agreed to the terms above."
+        }
+      ],
+      "status": "agreed",
+      "mode": "scripted_fallback",
+      "price_inr_per_ton": 1290,
+      "volume_tons_month": 2800,
+      "contract_months": 12,
+      "delivery_terms": "supplier site",
+      "transport_split": "50/50",
+      "started_at": "2026-09-12T08:33:52.737242+00:00",
+      "expires_at": "2027-09-07T08:33:52.737242+00:00"
+    }
+  ],
+  "report": {
+    "total_matches_found": 11,
+    "negotiations_attempted": 6,
+    "deals_agreed": 5,
+    "deals_failed": 1,
+    "total_waste_diverted_tons_month": 5650.0,
+    "total_net_co2e_saved_ton_month": 2535.2,
+    "total_monthly_transport_cost_inr": 412800.0,
+    "total_buyer_savings_inr_per_month": 2545500.0,
+    "total_supplier_savings_inr_per_month": 745500.0,
+    "total_economic_benefit_inr_per_month": 2878200.0,
+    "top_deals": [
+      {
+        "route": "Karnataka Steel Rolling Mills -> Namma Roadworks Pvt Ltd",
+        "material": "steel_slag",
+        "status": "agreed",
+        "volume_tons_month": 1200,
+        "price_inr_per_ton": 1050,
+        "contract_months": 12,
+        "net_co2e_saved_ton_month": 539.78,
+        "estimated_distance_km": 3.0,
+        "viability_score": 99.9,
+        "buyer_savings_inr_per_month": 180000,
+        "supplier_savings_inr_per_month": 240000,
+        "mode": "scripted_fallback"
+      },
+      {
+        "route": "Malnad Timber & Furniture -> Kaveri Particle Board Co",
+        "material": "sawdust",
+        "status": "agreed",
+        "volume_tons_month": 400,
+        "price_inr_per_ton": 750,
+        "contract_months": 12,
+        "net_co2e_saved_ton_month": 179.93,
+        "estimated_distance_km": 2.7,
+        "viability_score": 99.9,
+        "buyer_savings_inr_per_month": 140000,
+        "supplier_savings_inr_per_month": 32000,
+        "mode": "scripted_fallback"
+      },
+      {
+        "route": "Tumkur Chemical Industries -> Vega Gypsum Board Industries",
+        "material": "fgd_gypsum",
+        "status": "agreed",
+        "volume_tons_month": 900,
+        "price_inr_per_ton": 900,
+        "contract_months": 12,
+        "net_co2e_saved_ton_month": 404.88,
+        "estimated_distance_km": 2.1,
+        "viability_score": 99.9,
+        "buyer_savings_inr_per_month": 360000,
+        "supplier_savings_inr_per_month": 162000,
+        "mode": "scripted_fallback"
+      },
+      {
+        "route": "Nandi Breweries -> Golden Feather Poultry Feed",
+        "material": "spent_grain",
+        "status": "agreed",
+        "volume_tons_month": 350,
+        "price_inr_per_ton": 950,
+        "contract_months": 12,
+        "net_co2e_saved_ton_month": 157.13,
+        "estimated_distance_km": 16.9,
+        "viability_score": 99.3,
+        "buyer_savings_inr_per_month": 157500,
+        "supplier_savings_inr_per_month": 31500,
+        "mode": "scripted_fallback"
+      },
+      {
+        "route": "Cauvery Sugar Mills -> GreenVolt Biomass Power",
+        "material": "biomass_bagasse",
+        "status": "agreed",
+        "volume_tons_month": 2800,
+        "price_inr_per_ton": 1290,
+        "contract_months": 12,
+        "net_co2e_saved_ton_month": 1253.46,
+        "estimated_distance_km": 37.7,
+        "viability_score": 98.4,
+        "buyer_savings_inr_per_month": 1708000,
+        "supplier_savings_inr_per_month": 280000,
+        "mode": "scripted_fallback"
+      }
+    ],
+    "failed_negotiations": [
+      {
+        "route": "Bengaluru Thermal Power Station -> Deccan Cement Works",
+        "material": "fly_ash",
+        "reason": "Seller minimum (INR 1600/ton) exceeds buyer maximum (INR 1472/ton)."
+      }
+    ],
+    "notes": {
+      "co2e": "Estimated net avoided emissions/month, based on prototype emission assumptions (see agents/logistics.py) - not a certified carbon accounting figure.",
+      "distance": "Distances are straight-line (estimated), not actual road-routing distances.",
+      "data": "Synthetic demonstration data modeled on realistic industrial clusters and common symbiosis relationships - not real current market listings.",
+      "hazard": "Hazard compatibility is a hard gate based on the supplied material metadata, not a regulatory or permit compliance check.",
+      "economics": "Buyer/supplier savings are estimated against illustrative virgin-material and disposal-cost baselines documented in data/companies.json."
+    }
+  },
+  "pipeline": [
+    {
+      "stage": "Ingestion",
+      "detail": "17 companies"
+    },
+    {
+      "stage": "Matchmaking",
+      "detail": "11 compatible"
+    },
+    {
+      "stage": "Logistics",
+      "detail": "Top 6 ranked"
+    },
+    {
+      "stage": "Negotiation",
+      "detail": "5 agreements"
+    },
+    {
+      "stage": "Reporting",
+      "detail": "5650.0 t diverted"
+    }
+  ],
+  "top_n_to_negotiate": 6
+}
