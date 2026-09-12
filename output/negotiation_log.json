@@ -4,15 +4,23 @@
     "supplier": "Karnataka Steel Rolling Mills",
     "buyer": "Namma Roadworks Pvt Ltd",
     "category": "steel_slag",
-    "timestamp": "2026-09-12T16:49:05.900910+00:00",
+    "timestamp": "2026-09-12T17:39:13.975821+00:00",
     "transcript": [
       {
         "speaker": "supplier",
-        "text": "We propose a 12\u2011month recurring offtake of 720\u202ftons/month at INR\u202f1,150/ton.  \nDelivery will be FOB Bangalore, with a 50/50 split of transport costs.  \nThis meets our minimum volume and price thresholds while keeping logistics balanced."
+        "text": "We can offer a 12\u2011month recurring offtake at INR\u202f1,150 per ton, with a minimum monthly volume of 720\u202ftons (up to our 1,800\u2011ton capacity).  \nDelivery would be FOB at the port, so the buyer handles transport and we keep logistics minimal.  \nWe\u2019re comfortable with a 50/50 transport\u2011cost split if the buyer prefers that, but we\u2019d prefer the buyer to pick up.  \nLet me know if this works for you."
       },
       {
         "speaker": "buyer",
-        "text": "We propose a 12\u2011month recurring offtake of 1,200\u202ftons/month at INR\u202f1,000/ton.  \nDelivery will be FOB Bangalore, with a 50/50 split of transport costs.  \n\n---  \n\nAGREEMENT: {\"price_inr_per_ton\":1000,\"volume_tons_month\":1200,\"contract_months\":12,\"delivery_terms\":\"FOB Bangalore\",\"transport_split\":\"50/50\"}"
+        "text": "We can commit to a 12\u2011month contract for 1,200\u202ftons/month at INR\u202f1,000/ton.  \nDelivery terms: FOB the port, with a 50/50 transport\u2011cost split (seller covers 50\u202f% of the 3\u202fkm haul).  \nThis keeps the price below your maximum, meets our volume requirement, and maintains a manageable transport arrangement."
+      },
+      {
+        "speaker": "supplier",
+        "text": "We can accept INR\u202f1,000/ton for a 12\u2011month recurring offtake of 1,200\u202ftons/month.  \nDelivery will be FOB at the port, with the buyer responsible for pickup (so we keep logistics minimal).  \nLet me know if this arrangement works for you."
+      },
+      {
+        "speaker": "buyer",
+        "text": "AGREEMENT: {\"price_inr_per_ton\":1000,\"volume_tons_month\":1200,\"contract_months\":12,\"delivery_terms\":\"FOB port\",\"transport_split\":\"50/50\"}"
       },
       {
         "speaker": "supplier",
@@ -24,154 +32,75 @@
     "price_inr_per_ton": 1000,
     "volume_tons_month": 1200,
     "contract_months": 12,
-    "delivery_terms": "FOB Bangalore",
+    "delivery_terms": "FOB port",
     "transport_split": "50/50",
-    "started_at": "2026-09-12T16:49:05.900937+00:00",
-    "expires_at": "2027-09-07T16:49:05.900937+00:00"
+    "started_at": "2026-09-12T17:39:13.975867+00:00",
+    "expires_at": "2027-09-07T17:39:13.975867+00:00"
   },
   {
     "match_id": "C010->C011:sawdust",
     "supplier": "Malnad Timber & Furniture",
     "buyer": "Kaveri Particle Board Co",
     "category": "sawdust",
-    "timestamp": "2026-09-12T16:49:09.420028+00:00",
+    "timestamp": "2026-09-12T17:39:45.389282+00:00",
     "transcript": [
       {
         "speaker": "supplier",
-        "text": "We propose a 12\u2011month recurring offtake of 180\u202ftons per month at INR\u202f858 per ton.  \nDelivery will be FOB (buyer\u2011pickup) with a 50/50 transport\u2011cost split.  \nThis meets our minimum volume, price, and logistics preferences while ensuring a stable monthly supply."
+        "text": "Thank you for your interest in our sawdust.  \nWe can offer 180\u202ftons per month at INR\u202f858 per ton for a 12\u2011month recurring contract.  \nDelivery will be FOB (seller\u2019s responsibility to load at our facility).  \nTransport cost will be split 50/50, with the buyer responsible for the freight."
       },
       {
         "speaker": "buyer",
-        "text": "We can commit to a 12\u2011month recurring offtake of 400\u202ftons per month at INR\u202f850 per ton.  \nDelivery will be FOB buyer\u2011pickup with a 50/50 transport\u2011cost split.  \nThis meets our volume requirement, stays below the INR\u202f1012 ceiling, and keeps transport costs within our acceptable share."
+        "text": "We can increase the volume to 400\u202ftons/month while keeping the price competitive.  \nProposed terms: INR\u202f850 per ton, 12\u2011month recurring contract, FOB delivery (seller loads at facility), transport cost split 50/50.  \nThis meets our volume requirement and stays well below the INR\u202f1012/ton ceiling, with transport distance of 2.7\u202fkm remaining manageable."
       },
       {
         "speaker": "supplier",
-        "text": "We can accept your terms.  \n\nAGREEMENT: {\"price_inr_per_ton\":850,\"volume_tons_month\":400,\"contract_months\":12,\"delivery_terms\":\"FOB buyer\u2011pickup\",\"transport_split\":\"50/50\"}"
+        "text": "We can accommodate your volume request.  \nOffer: 400\u202ftons/month at INR\u202f858 per ton for a 12\u2011month recurring contract.  \nDelivery: FOB (seller loads at our facility).  \nTransport cost split: 50/50."
       },
       {
         "speaker": "buyer",
+        "text": "We can accept the 12\u2011month recurring contract at 400\u202ftons/month, but we need a lower price.  \nProposed terms: INR\u202f840 per ton, 12\u2011month contract, FOB delivery (seller loads), transport cost split 50/50.  \nThis keeps us well below the INR\u202f1012 ceiling while meeting volume and distance constraints."
+      },
+      {
+        "speaker": "supplier",
+        "text": "We can meet your volume.  \nOffer: 400\u202ftons/month at INR\u202f858 per ton for a 12\u2011month recurring contract.  \nDelivery: FOB (seller loads at our facility).  \nTransport cost split: 50/50."
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can finalize the deal at INR\u202f840 per ton.  \nAGREEMENT: {\"price_inr_per_ton\":840,\"volume_tons_month\":400,\"contract_months\":12,\"delivery_terms\":\"FOB (seller loads at facility)\",\"transport_split\":\"50/50\"}"
+      },
+      {
+        "speaker": "supplier",
         "text": "CONFIRMED"
       }
     ],
     "status": "agreed",
     "mode": "live_llm",
-    "price_inr_per_ton": 850,
+    "price_inr_per_ton": 840,
     "volume_tons_month": 400,
     "contract_months": 12,
-    "delivery_terms": "FOB buyer\u2011pickup",
+    "delivery_terms": "FOB (seller loads at facility)",
     "transport_split": "50/50",
-    "started_at": "2026-09-12T16:49:09.420048+00:00",
-    "expires_at": "2027-09-07T16:49:09.420048+00:00"
+    "started_at": "2026-09-12T17:39:45.389310+00:00",
+    "expires_at": "2027-09-07T17:39:45.389310+00:00"
   },
   {
     "match_id": "C017->C016:fgd_gypsum",
     "supplier": "Tumkur Chemical Industries",
     "buyer": "Vega Gypsum Board Industries",
     "category": "fgd_gypsum",
-    "timestamp": "2026-09-12T16:50:13.443406+00:00",
-    "transcript": [],
-    "status": "failed",
-    "mode": "live_llm_error",
-    "failure_reason": "LLM provider error after retries: Model returned empty content (likely spent full budget on hidden reasoning)"
-  },
-  {
-    "match_id": "C001->C002:fly_ash",
-    "supplier": "Bengaluru Thermal Power Station",
-    "buyer": "Deccan Cement Works",
-    "category": "fly_ash",
-    "timestamp": "2026-09-12T16:51:27.141978+00:00",
+    "timestamp": "2026-09-12T17:40:21.261303+00:00",
     "transcript": [
       {
         "speaker": "supplier",
-        "text": "We propose a 12\u2011month recurring offtake of 1,600\u202ftons/month at INR\u202f1,900/ton.  \nDelivery will be \u201cBuyer picks up at plant\u201d, so transport cost is borne entirely by the buyer.  \nThis meets our minimum volume, price, and logistics preferences while securing a long\u2011term contract."
+        "text": "We can offer a recurring monthly offtake of 380\u202ftons at INR\u202f1,014\u202f/\u202fton for a 12\u2011month term.  \nDelivery will be DAP (buyer\u2011pickup) with a 50/50 transport\u2011cost split.  \nWe\u2019re ready to start immediately if you agree to these terms."
       },
       {
         "speaker": "buyer",
-        "text": "We can secure a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,400/ton.  \nDelivery will be \u201cSeller delivers to buyer\u2019s plant\u201d with a 50/50 transport\u2011cost split (seller pays 50\u202f%).  \nThis meets our volume, price, and logistics constraints while locking in a reliable supply."
+        "text": "We can supply 900\u202ftons/month for a 12\u2011month term at INR\u202f1,050/ton.  \nDelivery will be DAP (buyer\u2011pickup) with a 50/50 transport\u2011cost split.  \nWe\u2019re ready to start immediately if you accept these terms."
       },
       {
         "speaker": "supplier",
-        "text": "We can agree to a 12\u2011month recurring offtake of 2,500\u202ftons/month at INR\u202f1,800/ton.  \nDelivery will be \u201cSeller delivers to buyer\u2019s plant\u201d with a 50/50 transport\u2011cost split (seller pays 50\u202f%).  \nThis meets our minimum price, volume, and logistics preferences while moving toward a long\u2011term contract."
-      },
-      {
-        "speaker": "buyer",
-        "text": "We can offer a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,470/ton.  \nDelivery will be \u201cSeller delivers to buyer\u2019s plant\u201d with a 50/50 transport\u2011cost split (seller pays 50\u202f%).  \nThis stays within our price ceiling, meets the required volume, and keeps logistics manageable."
-      },
-      {
-        "speaker": "supplier",
-        "text": "We can settle on a 12\u2011month recurring offtake of 2,500\u202ftons/month at INR\u202f1,750/ton.  \nDelivery will remain \u201cSeller delivers to buyer\u2019s plant\u201d with a 50/50 transport\u2011cost split (seller pays 50\u202f%).  \nThis meets our minimum price, volume, and logistics preferences while moving closer to your offer."
-      },
-      {
-        "speaker": "buyer",
-        "text": "We can agree to a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,472/ton.  \nDelivery will be \u201cSeller delivers to buyer\u2019s plant\u201d with a 50/50 transport\u2011cost split (seller pays 50\u202f%).  \nThis satisfies our price ceiling, volume requirement, and logistics preferences."
-      },
-      {
-        "speaker": "supplier",
-        "text": "AGREEMENT: {\"price_inr_per_ton\":1700,\"volume_tons_month\":2500,\"contract_months\":12,\"delivery_terms\":\"Seller delivers to buyer\u2019s plant\",\"transport_split\":\"50/50\"}"
-      }
-    ],
-    "status": "failed",
-    "mode": "live_llm",
-    "failure_reason": "Proposed agreement violated constraints: Price is above the buyer's maximum acceptable price."
-  },
-  {
-    "match_id": "C014->C015:spent_grain",
-    "supplier": "Nandi Breweries",
-    "buyer": "Golden Feather Poultry Feed",
-    "category": "spent_grain",
-    "timestamp": "2026-09-12T16:51:50.925440+00:00",
-    "transcript": [
-      {
-        "speaker": "supplier",
-        "text": "We propose a 12\u2011month recurring offtake of 152\u202ftons/month at INR\u202f1,092 per ton.  \nDelivery will be FOB at the nearest port, with the buyer responsible for all transport costs (buyer\u2011only).  \nThis meets our minimum volume, price, and logistics preferences while ensuring a long\u2011term partnership."
-      },
-      {
-        "speaker": "buyer",
-        "text": "We can commit to a 12\u2011month contract for 350\u202ftons/month at INR\u202f1,200/ton.  \nDelivery terms: FOB nearest port, with a 50/50 transport\u2011cost split (seller covers half).  \nThis keeps the price below our INR\u202f1,288 ceiling, meets the required volume, and maintains the 16.9\u202fkm route.  \n\nAGREEMENT: {\"price_inr_per_ton\":1200,\"volume_tons_month\":350,\"contract_months\":12,\"delivery_terms\":\"FOB nearest port\",\"transport_split\":\"50/50\"}"
-      },
-      {
-        "speaker": "supplier",
-        "text": "NO_DEAL: price above our preferred rate."
-      }
-    ],
-    "status": "failed",
-    "mode": "live_llm",
-    "failure_reason": "price above our preferred rate."
-  },
-  {
-    "match_id": "C007->C008:biomass_bagasse",
-    "supplier": "Cauvery Sugar Mills",
-    "buyer": "GreenVolt Biomass Power",
-    "category": "biomass_bagasse",
-    "timestamp": "2026-09-12T16:53:06.475244+00:00",
-    "transcript": [
-      {
-        "speaker": "supplier",
-        "text": "We propose a recurring monthly offtake of 1,280\u202ftons for a 12\u2011month term at INR\u202f1,482 per ton.  \nDelivery will be FOB, with the buyer responsible for pickup and a 50/50 transport\u2011cost split.  \nThis meets our minimum volume and price constraints while keeping logistics manageable."
-      },
-      {
-        "speaker": "buyer",
-        "text": "We can offer a 12\u2011month recurring contract for 2,800\u202ftons/month at INR\u202f1,600/ton.  \nDelivery terms: DAP (Delivered at Place) to our plant, with a 50/50 transport\u2011cost split.  \nThis meets your volume requirement, keeps the price well below your INR\u202f1,748 ceiling, and preserves the manageable 37.7\u202fkm transport distance.  \n\n[Round 2 of 4]"
-      },
-      {
-        "speaker": "supplier",
-        "text": "We can agree to a 12\u2011month recurring contract for 1,280\u202ftons/month at INR\u202f1,482 per ton.  \nDelivery will be DAP to your plant, with a 50/50 transport\u2011cost split.  \nThis meets our minimum volume and price constraints while keeping logistics manageable."
-      },
-      {
-        "speaker": "buyer",
-        "text": "We can offer a 12\u2011month recurring contract for 2,800\u202ftons/month at INR\u202f1,600/ton.  \nDelivery terms: DAP to our plant, with a 50/50 transport\u2011cost split.  \nThis meets your volume requirement, keeps the price well below your INR\u202f1,748 ceiling, and preserves the manageable 37.7\u202fkm transport distance.  \n\n[Round 3 of 4]"
-      },
-      {
-        "speaker": "supplier",
-        "text": "We can accept a 12\u2011month recurring contract for 2,800\u202ftons/month at INR\u202f1,482 per ton.  \nDelivery will be DAP to your plant, with a 50/50 transport\u2011cost split.  \nThis keeps the price at our preferred level, meets the volume you need, and maintains a balanced logistics burden."
-      },
-      {
-        "speaker": "buyer",
-        "text": "We can accept a 12\u2011month recurring contract for 2,800\u202ftons/month but at INR\u202f1,400/ton.  \nDelivery terms remain DAP to our plant, with a 50/50 transport\u2011cost split.  \nThis keeps the price well below your INR\u202f1,748 ceiling while meeting volume and logistics requirements.  \n\n[Round 4 of 4]"
-      },
-      {
-        "speaker": "supplier",
-        "text": "AGREEMENT: {\"price_inr_per_ton\":1482,\"volume_tons_month\":2800,\"contract_months\":12,\"delivery_terms\":\"DAP\",\"transport_split\":\"50/50\"}"
+        "text": "AGREEMENT: {\"price_inr_per_ton\":1050,\"volume_tons_month\":900,\"contract_months\":12,\"delivery_terms\":\"DAP (buyer\u2011pickup)\",\"transport_split\":\"50/50\"}"
       },
       {
         "speaker": "buyer",
@@ -180,12 +109,112 @@
     ],
     "status": "agreed",
     "mode": "live_llm",
-    "price_inr_per_ton": 1482,
-    "volume_tons_month": 2800,
+    "price_inr_per_ton": 1050,
+    "volume_tons_month": 900,
     "contract_months": 12,
-    "delivery_terms": "DAP",
+    "delivery_terms": "DAP (buyer\u2011pickup)",
     "transport_split": "50/50",
-    "started_at": "2026-09-12T16:53:06.475267+00:00",
-    "expires_at": "2027-09-07T16:53:06.475267+00:00"
+    "started_at": "2026-09-12T17:40:21.261347+00:00",
+    "expires_at": "2027-09-07T17:40:21.261347+00:00"
+  },
+  {
+    "match_id": "C018->C019:rice_husk",
+    "supplier": "Davanagere Rice Millers Co-op",
+    "buyer": "Davanagere Biomass Power Ltd",
+    "category": "rice_husk",
+    "timestamp": "2026-09-12T17:40:53.965263+00:00",
+    "transcript": [
+      {
+        "speaker": "supplier",
+        "text": "We propose a 12\u2011month recurring offtake of 1,000\u202ftons/month at INR\u202f650/ton, with delivery at the mill (FOB) and a 50/50 split of transport costs. This meets our minimum volume, price, and logistics preferences while ensuring a stable monthly supply."
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can offer a 12\u2011month contract for 1,200\u202ftons/month at INR\u202f680/ton.  \nDelivery will be FOB at the mill, with a 50/50 transport\u2011cost split.  \nThis meets our volume requirement, stays below the INR\u202f700 ceiling, and keeps logistics unchanged.  \n\nAGREEMENT: {\"price_inr_per_ton\":680,\"volume_tons_month\":1200,\"contract_months\":12,\"delivery_terms\":\"FOB mill\",\"transport_split\":\"50/50\"}"
+      },
+      {
+        "speaker": "supplier",
+        "text": "CONFIRMED"
+      }
+    ],
+    "status": "agreed",
+    "mode": "live_llm",
+    "price_inr_per_ton": 680,
+    "volume_tons_month": 1200,
+    "contract_months": 12,
+    "delivery_terms": "FOB mill",
+    "transport_split": "50/50",
+    "started_at": "2026-09-12T17:40:53.965319+00:00",
+    "expires_at": "2027-09-07T17:40:53.965319+00:00"
+  },
+  {
+    "match_id": "C022->C023:whey",
+    "supplier": "Hassan Dairy Cooperative",
+    "buyer": "Hassan BioEnergy Systems",
+    "category": "whey",
+    "timestamp": "2026-09-12T17:41:20.979993+00:00",
+    "transcript": [
+      {
+        "speaker": "supplier",
+        "text": "We can offer 200\u202ftons/month of liquid whey at INR\u202f750 per ton for a 12\u2011month term.  \nDelivery will be FOB at our facility, with the buyer responsible for pickup.  \nTransport cost will be split 50/50 between parties."
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can supply 250\u202ftons/month at INR\u202f740/ton for a 12\u2011month term.  \nDelivery will be FOB at your facility, with the buyer responsible for pickup.  \nTransport cost will remain split 50/50 between parties."
+      },
+      {
+        "speaker": "supplier",
+        "text": "AGREEMENT: {\"price_inr_per_ton\":740,\"volume_tons_month\":250,\"contract_months\":12,\"delivery_terms\":\"FOB at our facility\",\"transport_split\":\"50/50\"}"
+      },
+      {
+        "speaker": "buyer",
+        "text": "CONFIRMED"
+      }
+    ],
+    "status": "agreed",
+    "mode": "live_llm",
+    "price_inr_per_ton": 740,
+    "volume_tons_month": 250,
+    "contract_months": 12,
+    "delivery_terms": "FOB at our facility",
+    "transport_split": "50/50",
+    "started_at": "2026-09-12T17:41:20.980037+00:00",
+    "expires_at": "2027-09-07T17:41:20.980037+00:00"
+  },
+  {
+    "match_id": "C001->C002:fly_ash",
+    "supplier": "Bengaluru Thermal Power Station",
+    "buyer": "Deccan Cement Works",
+    "category": "fly_ash",
+    "timestamp": "2026-09-12T17:42:20.297441+00:00",
+    "transcript": [
+      {
+        "speaker": "supplier",
+        "text": "We can supply 1,600\u202ftons/month for 12\u202fmonths at\u202fINR\u202f1,900/ton.  \nTransport cost will be split 50/50 (seller/buyer).  \nThis meets our minimum volume and price, and keeps logistics balanced.  \nWe have 4,000\u202ftons/month available, so this is a recurring monthly offtake."
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can lock in 2,500\u202ftons/month for 12\u202fmonths at INR\u202f1,472/ton, DDP, with a 50/50 transport split. This meets our volume and price limits while keeping logistics balanced."
+      },
+      {
+        "speaker": "supplier",
+        "text": "We can offer 2,500\u202ftons/month for 12\u202fmonths at\u202fINR\u202f1,600/ton.  \nDelivery will be DDP with a 50/50 transport split.  \nThis meets our minimum price, volume, and contract\u2011length goals while keeping logistics balanced."
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can accept 2,500\u202ftons/month for 12\u202fmonths at INR\u202f1,472/ton, DDP, with a 50/50 transport split. This meets our price ceiling and volume requirement while keeping logistics balanced."
+      },
+      {
+        "speaker": "supplier",
+        "text": "We can accept 2,500\u202ftons/month for 12\u202fmonths at\u202fINR\u202f1,600/ton, DDP, with a 50/50 transport split.  \nThis meets our minimum price, volume, and contract\u2011length goals while keeping logistics balanced."
+      },
+      {
+        "speaker": "buyer",
+        "text": "AGREEMENT: {\"price_inr_per_ton\":1472,\"volume_tons_month\":2500,\"contract_months\":12,\"delivery_terms\":\"DDP\",\"transport_split\":\"50/50\"}"
+      }
+    ],
+    "status": "failed",
+    "mode": "live_llm",
+    "failure_reason": "Proposed agreement violated constraints: Price is below the seller's minimum acceptable price."
   }
 ]

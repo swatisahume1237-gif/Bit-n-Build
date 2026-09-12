@@ -490,5 +490,260 @@
       }
     ],
     "needs": []
+  },
+  {
+    "id": "C018",
+    "name": "Davanagere Rice Millers Co-op",
+    "industry": "rice_mill",
+    "city": "Davanagere",
+    "lat": 14.4644,
+    "lon": 75.9218,
+    "byproducts": [
+      {
+        "category": "rice_husk",
+        "description": "Rice husk from paddy milling",
+        "volume_tons_month": 1500,
+        "quality_grade": "grade_A",
+        "hazard_flag": false,
+        "disposal_cost_inr_per_ton": 150,
+        "commercial_terms": {
+          "minimum_price_inr_per_ton": 400,
+          "preferred_price_inr_per_ton": 650,
+          "minimum_volume_tons_month": 1000,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ],
+    "needs": []
+  },
+  {
+    "id": "C019",
+    "name": "Davanagere Biomass Power Ltd",
+    "industry": "power_generation",
+    "city": "Davanagere",
+    "lat": 14.4720,
+    "lon": 75.9350,
+    "byproducts": [],
+    "needs": [
+      {
+        "category": "rice_husk",
+        "description": "Rice husk feedstock for boilers",
+        "volume_tons_month": 1400,
+        "quality_spec": "grade_A_or_B",
+        "hazard_accepted": false,
+        "virgin_material_cost_inr_per_ton": 800,
+        "commercial_terms": {
+          "maximum_price_inr_per_ton": 700,
+          "required_volume_tons_month": 1200,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "C020",
+    "name": "Bengaluru Glass Works",
+    "industry": "glass_manufacturing",
+    "city": "Bengaluru",
+    "lat": 13.0200,
+    "lon": 77.5600,
+    "byproducts": [
+      {
+        "category": "glass_cullet",
+        "description": "Broken and off-spec waste glass cullet",
+        "volume_tons_month": 600,
+        "quality_grade": "grade_A",
+        "hazard_flag": false,
+        "disposal_cost_inr_per_ton": 300,
+        "commercial_terms": {
+          "minimum_price_inr_per_ton": 900,
+          "preferred_price_inr_per_ton": 1200,
+          "minimum_volume_tons_month": 400,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ],
+    "needs": []
+  },
+  {
+    "id": "C021",
+    "name": "Karnataka Road Aggregates Pvt Ltd",
+    "industry": "construction",
+    "city": "Bengaluru",
+    "lat": 12.8800,
+    "lon": 77.5300,
+    "byproducts": [],
+    "needs": [
+      {
+        "category": "glass_cullet",
+        "description": "Glass cullet as aggregate substitute in road base",
+        "volume_tons_month": 550,
+        "quality_spec": "grade_A_or_B",
+        "hazard_accepted": false,
+        "virgin_material_cost_inr_per_ton": 1500,
+        "commercial_terms": {
+          "maximum_price_inr_per_ton": 1300,
+          "required_volume_tons_month": 500,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "C022",
+    "name": "Hassan Dairy Cooperative",
+    "industry": "dairy",
+    "city": "Hassan",
+    "lat": 13.0033,
+    "lon": 76.1004,
+    "byproducts": [
+      {
+        "category": "whey",
+        "description": "Liquid whey byproduct from cheese and paneer production",
+        "volume_tons_month": 300,
+        "quality_grade": "grade_A",
+        "hazard_flag": false,
+        "disposal_cost_inr_per_ton": 200,
+        "commercial_terms": {
+          "minimum_price_inr_per_ton": 500,
+          "preferred_price_inr_per_ton": 750,
+          "minimum_volume_tons_month": 200,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ],
+    "needs": []
+  },
+  {
+    "id": "C023",
+    "name": "Hassan BioEnergy Systems",
+    "industry": "biogas",
+    "city": "Hassan",
+    "lat": 13.0150,
+    "lon": 76.1100,
+    "byproducts": [],
+    "needs": [
+      {
+        "category": "whey",
+        "description": "Whey as feedstock for anaerobic digestion",
+        "volume_tons_month": 280,
+        "quality_spec": "any",
+        "hazard_accepted": true,
+        "virgin_material_cost_inr_per_ton": 900,
+        "commercial_terms": {
+          "maximum_price_inr_per_ton": 800,
+          "required_volume_tons_month": 250,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "C024",
+    "name": "Hubballi Textile Mills",
+    "industry": "textile",
+    "city": "Hubballi",
+    "lat": 15.3647,
+    "lon": 75.1240,
+    "byproducts": [
+      {
+        "category": "cotton_waste",
+        "description": "Cotton fibre waste and trimmings",
+        "volume_tons_month": 250,
+        "quality_grade": "grade_B",
+        "hazard_flag": false,
+        "disposal_cost_inr_per_ton": 180,
+        "commercial_terms": {
+          "minimum_price_inr_per_ton": 600,
+          "preferred_price_inr_per_ton": 850,
+          "minimum_volume_tons_month": 150,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ],
+    "needs": []
+  },
+  {
+    "id": "C025",
+    "name": "Dharwad NonWoven Fabrics Ltd",
+    "industry": "manufacturing",
+    "city": "Hubballi",
+    "lat": 15.3500,
+    "lon": 75.1400,
+    "byproducts": [],
+    "needs": [
+      {
+        "category": "cotton_waste",
+        "description": "Cotton waste as raw material for non-woven insulation",
+        "volume_tons_month": 240,
+        "quality_spec": "grade_A_or_B",
+        "hazard_accepted": false,
+        "virgin_material_cost_inr_per_ton": 1100,
+        "commercial_terms": {
+          "maximum_price_inr_per_ton": 950,
+          "required_volume_tons_month": 200,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "C026",
+    "name": "Mysuru Paper Mills",
+    "industry": "paper",
+    "city": "Mysuru",
+    "lat": 12.3052,
+    "lon": 76.6552,
+    "byproducts": [
+      {
+        "category": "paper_sludge",
+        "description": "De-inking and pulping process sludge",
+        "volume_tons_month": 400,
+        "quality_grade": "grade_B",
+        "hazard_flag": false,
+        "disposal_cost_inr_per_ton": 220,
+        "commercial_terms": {
+          "minimum_price_inr_per_ton": 300,
+          "preferred_price_inr_per_ton": 500,
+          "minimum_volume_tons_month": 250,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ],
+    "needs": []
+  },
+  {
+    "id": "C027",
+    "name": "Mysuru Clay Brick Works",
+    "industry": "construction_materials",
+    "city": "Mysuru",
+    "lat": 12.2800,
+    "lon": 76.6300,
+    "byproducts": [],
+    "needs": [
+      {
+        "category": "paper_sludge",
+        "description": "Paper sludge as pore-forming additive in brick manufacturing",
+        "volume_tons_month": 380,
+        "quality_spec": "any",
+        "hazard_accepted": false,
+        "virgin_material_cost_inr_per_ton": 650,
+        "commercial_terms": {
+          "maximum_price_inr_per_ton": 550,
+          "required_volume_tons_month": 300,
+          "preferred_contract_months": 12,
+          "max_transport_share": 0.5
+        }
+      }
+    ]
   }
 ]
