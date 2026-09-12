@@ -355,7 +355,7 @@
         "disposal_cost_inr_per_ton": 600,
         "commercial_terms": {
           "minimum_price_inr_per_ton": 658,
-          "preferred_price_inr_per_ton": 495,
+          "preferred_price_inr_per_ton": 800,
           "minimum_volume_tons_month": 88,
           "preferred_contract_months": 12,
           "max_transport_share": 0.5

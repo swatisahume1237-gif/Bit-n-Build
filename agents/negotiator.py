@@ -265,7 +265,6 @@ Your hard constraints (do not violate these):
 - Standard transport-cost split for this route: {preferred_split} (seller/buyer) - you may deviate
   only within your own maximum share limit above.{hint_line}
 Your goals, in priority order:
-Your goals, in priority order:
 1. Secure a recurring monthly offtake agreement (avoid one-off deals).
 2. Get as close to your preferred price as possible - never accept below your minimum.
 3. Minimise your logistics burden - prefer buyer picks up or shares transport cost.
@@ -296,7 +295,6 @@ Your hard constraints (do not violate these):
 - Maximum share of transport cost you'll accept: {int(buyer_terms['max_transport_share']*100)}%
 - Standard transport-cost split for this route: {preferred_split} (seller/buyer) - you may deviate
   only within your own maximum share limit above.{hint_line}
-Your goals, in priority order:
 Your goals, in priority order:
 1. Lock in a reliable recurring supply to replace virgin raw material purchases.
 2. Negotiate as far below your maximum price as possible.
