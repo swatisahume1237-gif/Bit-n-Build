@@ -227,8 +227,8 @@ def validate_agreement(data: dict, match: dict, seller_terms: dict, buyer_terms:
     if volume < buyer_terms["required_volume_tons_month"]:
         return False, "Volume is below the buyer's required volume."
 
-    if months <= 0:
-        return False, "Contract duration must be a positive number of months."
+    if months <= 0 or months > 36:
+        return False, "Contract duration must be between 1 and 36 months."
 
     transport_split = data.get("transport_split")
     if not isinstance(transport_split, str) or "/" not in transport_split:

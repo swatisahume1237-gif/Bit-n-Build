@@ -35,11 +35,17 @@ class ReportingAgent:
             if not m:
                 continue
 
-            volume = n.get("volume_tons_month") or min(
-                m["supply_volume_tons_month"], m["demand_volume_tons_month"]
-            )
+            full_capacity = min(m["supply_volume_tons_month"], m["demand_volume_tons_month"])
+            volume = n.get("volume_tons_month") or full_capacity
             price = n.get("price_inr_per_ton")
-            transport_cost = m["transport_cost_inr_per_month"]
+
+            # Scale CO2e/transport-cost proportionally to the ACTUAL negotiated
+            # volume, not the full match capacity - LogisticsAgent's pre-computed
+            # figures assume full capacity, so a deal settled below that would
+            # otherwise overstate impact.
+            scale = (volume / full_capacity) if full_capacity else 0
+            transport_cost = m["transport_cost_inr_per_month"] * scale
+            net_co2e_this_deal = m["net_co2e_saved_ton_month"] * scale
 
             # --- Real "cost saved" calculation, not just transport cost ---
             virgin_cost = m.get("virgin_material_cost_inr_per_ton")
@@ -49,7 +55,7 @@ class ReportingAgent:
             supplier_savings = disposal_cost * volume if disposal_cost else None
 
             total_volume += volume
-            total_net_co2e += m["net_co2e_saved_ton_month"]
+            total_net_co2e += net_co2e_this_deal
             total_transport_cost += transport_cost
             if buyer_savings is not None:
                 total_buyer_savings += buyer_savings
@@ -63,7 +69,7 @@ class ReportingAgent:
                 "volume_tons_month": volume,
                 "price_inr_per_ton": price,
                 "contract_months": n.get("contract_months"),
-                "net_co2e_saved_ton_month": m["net_co2e_saved_ton_month"],
+                "net_co2e_saved_ton_month": round(net_co2e_this_deal, 2),
                 "estimated_distance_km": m["distance_km"],
                 "viability_score": m["viability_score"],
                 "buyer_savings_inr_per_month": round(buyer_savings, 0) if buyer_savings is not None else None,
