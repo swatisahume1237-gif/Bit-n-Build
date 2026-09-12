@@ -192,5 +192,33 @@
     "transport_split": "50/50",
     "started_at": "2026-09-12T08:33:52.737242+00:00",
     "expires_at": "2027-09-07T08:33:52.737242+00:00"
+  },
+  {
+    "match_id": "C001->C002:fly_ash",
+    "supplier": "Bengaluru Thermal Power Station",
+    "buyer": "Deccan Cement Works",
+    "category": "fly_ash",
+    "timestamp": "2026-09-12T11:14:15.489946+00:00",
+    "transcript": [
+      {
+        "speaker": "supplier",
+        "text": "We propose a 12\u2011month recurring offtake of 2000\u202ftons/month at INR\u202f1900/ton.  \nDelivery will be"
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can offer a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,400/ton, which is below your maximum price and meets the volume requirement.  \nDelivery will be CIF to your plant, with a 50/50 transport\u2011cost split (seller bears 50\u202f% of the 12.4\u202fkm haul)."
+      },
+      {
+        "speaker": "supplier",
+        "text": "We can accept a 12\u2011month recurring offtake of 2000\u202ftons/month at INR\u202f1600/ton.  \nDelivery will be FOB at our plant, with a 50/50 transport\u2011cost split (seller bears 50\u202f% of the 12.4\u202fkm haul)."
+      },
+      {
+        "speaker": "buyer",
+        "text": "We can lock in a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,450/ton, which is below your maximum price and meets the volume requirement.  \nDelivery will be CIF to your plant, with a 50/50 transport\u2011cost split (seller bears 50\u202f% of the 12.4\u202fkm haul).  \n\nAGREEMENT: {\"price_inr_per_ton\":1450,\"volume_tons_month\":2500,\""
+      }
+    ],
+    "status": "failed",
+    "mode": "live_llm",
+    "failure_reason": "Agreement declared but terms were not valid structured data."
   }
 ]

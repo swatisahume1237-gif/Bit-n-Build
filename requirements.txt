@@ -1,1 +1,2 @@
-anthropic
+groq
+python-dotenv

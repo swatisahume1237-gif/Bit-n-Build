@@ -1012,194 +1012,108 @@
       "supplier": "Karnataka Steel Rolling Mills",
       "buyer": "Namma Roadworks Pvt Ltd",
       "category": "steel_slag",
-      "timestamp": "2026-09-12T08:33:52.735145+00:00",
-      "transcript": [
-        {
-          "speaker": "supplier",
-          "text": "We can offer 1200 tons/month of steel_slag at INR 1150/ton, recurring monthly, delivery from our site."
-        },
-        {
-          "speaker": "buyer",
-          "text": "That's above our target. We can do INR 850/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
-        },
-        {
-          "speaker": "supplier",
-          "text": "Acceptable at INR 1050/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 1050, \"volume_tons_month\": 1200, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
-        },
-        {
-          "speaker": "buyer",
-          "text": "CONFIRMED: agreed to the terms above."
-        }
-      ],
+      "timestamp": "2026-09-12T11:14:11.952528+00:00",
+      "transcript": [],
       "status": "agreed",
-      "mode": "scripted_fallback",
       "price_inr_per_ton": 1050,
       "volume_tons_month": 1200,
       "contract_months": 12,
       "delivery_terms": "supplier site",
       "transport_split": "50/50",
-      "started_at": "2026-09-12T08:33:52.735159+00:00",
-      "expires_at": "2027-09-07T08:33:52.735159+00:00"
+      "mode": "memory_reuse",
+      "memory_note": "Existing active agreement found (originally agreed 2026-09-12T08:33:52.735145+00:00, valid until 2027-09-07T08:33:52.735159+00:00) - reused without renegotiation."
     },
     {
       "match_id": "C010->C011:sawdust",
       "supplier": "Malnad Timber & Furniture",
       "buyer": "Kaveri Particle Board Co",
       "category": "sawdust",
-      "timestamp": "2026-09-12T08:33:52.735442+00:00",
-      "transcript": [
-        {
-          "speaker": "supplier",
-          "text": "We can offer 400 tons/month of sawdust at INR 858/ton, recurring monthly, delivery from our site."
-        },
-        {
-          "speaker": "buyer",
-          "text": "That's above our target. We can do INR 810/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
-        },
-        {
-          "speaker": "supplier",
-          "text": "Acceptable at INR 750/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 750, \"volume_tons_month\": 400, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
-        },
-        {
-          "speaker": "buyer",
-          "text": "CONFIRMED: agreed to the terms above."
-        }
-      ],
+      "timestamp": "2026-09-12T11:14:11.952599+00:00",
+      "transcript": [],
       "status": "agreed",
-      "mode": "scripted_fallback",
       "price_inr_per_ton": 750,
       "volume_tons_month": 400,
       "contract_months": 12,
       "delivery_terms": "supplier site",
       "transport_split": "50/50",
-      "started_at": "2026-09-12T08:33:52.735448+00:00",
-      "expires_at": "2027-09-07T08:33:52.735448+00:00"
+      "mode": "memory_reuse",
+      "memory_note": "Existing active agreement found (originally agreed 2026-09-12T08:33:52.735442+00:00, valid until 2027-09-07T08:33:52.735448+00:00) - reused without renegotiation."
     },
     {
       "match_id": "C017->C016:fgd_gypsum",
       "supplier": "Tumkur Chemical Industries",
       "buyer": "Vega Gypsum Board Industries",
       "category": "fgd_gypsum",
-      "timestamp": "2026-09-12T08:33:52.735766+00:00",
-      "transcript": [
-        {
-          "speaker": "supplier",
-          "text": "We can offer 900 tons/month of fgd_gypsum at INR 1014/ton, recurring monthly, delivery from our site."
-        },
-        {
-          "speaker": "buyer",
-          "text": "That's above our target. We can do INR 957/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
-        },
-        {
-          "speaker": "supplier",
-          "text": "Acceptable at INR 900/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 900, \"volume_tons_month\": 900, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
-        },
-        {
-          "speaker": "buyer",
-          "text": "CONFIRMED: agreed to the terms above."
-        }
-      ],
+      "timestamp": "2026-09-12T11:14:11.952651+00:00",
+      "transcript": [],
       "status": "agreed",
-      "mode": "scripted_fallback",
       "price_inr_per_ton": 900,
       "volume_tons_month": 900,
       "contract_months": 12,
       "delivery_terms": "supplier site",
       "transport_split": "50/50",
-      "started_at": "2026-09-12T08:33:52.735774+00:00",
-      "expires_at": "2027-09-07T08:33:52.735774+00:00"
+      "mode": "memory_reuse",
+      "memory_note": "Existing active agreement found (originally agreed 2026-09-12T08:33:52.735766+00:00, valid until 2027-09-07T08:33:52.735774+00:00) - reused without renegotiation."
     },
     {
       "match_id": "C001->C002:fly_ash",
       "supplier": "Bengaluru Thermal Power Station",
       "buyer": "Deccan Cement Works",
       "category": "fly_ash",
-      "timestamp": "2026-09-12T08:33:52.736299+00:00",
+      "timestamp": "2026-09-12T11:14:15.489946+00:00",
       "transcript": [
         {
           "speaker": "supplier",
-          "text": "Our minimum for fly_ash is INR 1600/ton given our disposal-avoidance economics."
+          "text": "We propose a 12\u2011month recurring offtake of 2000\u202ftons/month at INR\u202f1900/ton.  \nDelivery will be"
         },
         {
           "speaker": "buyer",
-          "text": "We can't go above INR 1472/ton against our virgin-material benchmark. That gap doesn't close for us."
+          "text": "We can offer a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,400/ton, which is below your maximum price and meets the volume requirement.  \nDelivery will be CIF to your plant, with a 50/50 transport\u2011cost split (seller bears 50\u202f% of the 12.4\u202fkm haul)."
         },
         {
           "speaker": "supplier",
-          "text": "Understood - INR 1472/ton is below what we can accept. NO_DEAL: price ranges do not overlap."
+          "text": "We can accept a 12\u2011month recurring offtake of 2000\u202ftons/month at INR\u202f1600/ton.  \nDelivery will be FOB at our plant, with a 50/50 transport\u2011cost split (seller bears 50\u202f% of the 12.4\u202fkm haul)."
+        },
+        {
+          "speaker": "buyer",
+          "text": "We can lock in a 12\u2011month contract for 2,500\u202ftons/month at INR\u202f1,450/ton, which is below your maximum price and meets the volume requirement.  \nDelivery will be CIF to your plant, with a 50/50 transport\u2011cost split (seller bears 50\u202f% of the 12.4\u202fkm haul).  \n\nAGREEMENT: {\"price_inr_per_ton\":1450,\"volume_tons_month\":2500,\""
         }
       ],
       "status": "failed",
-      "failure_reason": "Seller minimum (INR 1600/ton) exceeds buyer maximum (INR 1472/ton).",
-      "mode": "scripted_fallback"
+      "mode": "live_llm",
+      "failure_reason": "Agreement declared but terms were not valid structured data."
     },
     {
       "match_id": "C014->C015:spent_grain",
       "supplier": "Nandi Breweries",
       "buyer": "Golden Feather Poultry Feed",
       "category": "spent_grain",
-      "timestamp": "2026-09-12T08:33:52.736758+00:00",
-      "transcript": [
-        {
-          "speaker": "supplier",
-          "text": "We can offer 350 tons/month of spent_grain at INR 1092/ton, recurring monthly, delivery from our site."
-        },
-        {
-          "speaker": "buyer",
-          "text": "That's above our target. We can do INR 1030/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
-        },
-        {
-          "speaker": "supplier",
-          "text": "Acceptable at INR 950/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 950, \"volume_tons_month\": 350, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
-        },
-        {
-          "speaker": "buyer",
-          "text": "CONFIRMED: agreed to the terms above."
-        }
-      ],
+      "timestamp": "2026-09-12T11:14:15.501176+00:00",
+      "transcript": [],
       "status": "agreed",
-      "mode": "scripted_fallback",
       "price_inr_per_ton": 950,
       "volume_tons_month": 350,
       "contract_months": 12,
       "delivery_terms": "supplier site",
       "transport_split": "50/50",
-      "started_at": "2026-09-12T08:33:52.736765+00:00",
-      "expires_at": "2027-09-07T08:33:52.736765+00:00"
+      "mode": "memory_reuse",
+      "memory_note": "Existing active agreement found (originally agreed 2026-09-12T08:33:52.736758+00:00, valid until 2027-09-07T08:33:52.736765+00:00) - reused without renegotiation."
     },
     {
       "match_id": "C007->C008:biomass_bagasse",
       "supplier": "Cauvery Sugar Mills",
       "buyer": "GreenVolt Biomass Power",
       "category": "biomass_bagasse",
-      "timestamp": "2026-09-12T08:33:52.737234+00:00",
-      "transcript": [
-        {
-          "speaker": "supplier",
-          "text": "We can offer 2800 tons/month of biomass_bagasse at INR 1482/ton, recurring monthly, delivery from our site."
-        },
-        {
-          "speaker": "buyer",
-          "text": "That's above our target. We can do INR 1398/ton if you commit to a 12-month recurring contract and we split transport cost 50/50."
-        },
-        {
-          "speaker": "supplier",
-          "text": "Acceptable at INR 1290/ton flat, 12-month recurring, transport split 50/50. AGREEMENT: {\"price_inr_per_ton\": 1290, \"volume_tons_month\": 2800, \"contract_months\": 12, \"delivery_terms\": \"supplier site\", \"transport_split\": \"50/50\"}"
-        },
-        {
-          "speaker": "buyer",
-          "text": "CONFIRMED: agreed to the terms above."
-        }
-      ],
+      "timestamp": "2026-09-12T11:14:15.501423+00:00",
+      "transcript": [],
       "status": "agreed",
-      "mode": "scripted_fallback",
       "price_inr_per_ton": 1290,
       "volume_tons_month": 2800,
       "contract_months": 12,
       "delivery_terms": "supplier site",
       "transport_split": "50/50",
-      "started_at": "2026-09-12T08:33:52.737242+00:00",
-      "expires_at": "2027-09-07T08:33:52.737242+00:00"
+      "mode": "memory_reuse",
+      "memory_note": "Existing active agreement found (originally agreed 2026-09-12T08:33:52.737234+00:00, valid until 2027-09-07T08:33:52.737242+00:00) - reused without renegotiation."
     }
   ],
   "report": {
@@ -1226,7 +1140,7 @@
         "viability_score": 99.9,
         "buyer_savings_inr_per_month": 180000,
         "supplier_savings_inr_per_month": 240000,
-        "mode": "scripted_fallback"
+        "mode": "memory_reuse"
       },
       {
         "route": "Malnad Timber & Furniture -> Kaveri Particle Board Co",
@@ -1240,7 +1154,7 @@
         "viability_score": 99.9,
         "buyer_savings_inr_per_month": 140000,
         "supplier_savings_inr_per_month": 32000,
-        "mode": "scripted_fallback"
+        "mode": "memory_reuse"
       },
       {
         "route": "Tumkur Chemical Industries -> Vega Gypsum Board Industries",
@@ -1254,7 +1168,7 @@
         "viability_score": 99.9,
         "buyer_savings_inr_per_month": 360000,
         "supplier_savings_inr_per_month": 162000,
-        "mode": "scripted_fallback"
+        "mode": "memory_reuse"
       },
       {
         "route": "Nandi Breweries -> Golden Feather Poultry Feed",
@@ -1268,7 +1182,7 @@
         "viability_score": 99.3,
         "buyer_savings_inr_per_month": 157500,
         "supplier_savings_inr_per_month": 31500,
-        "mode": "scripted_fallback"
+        "mode": "memory_reuse"
       },
       {
         "route": "Cauvery Sugar Mills -> GreenVolt Biomass Power",
@@ -1282,14 +1196,14 @@
         "viability_score": 98.4,
         "buyer_savings_inr_per_month": 1708000,
         "supplier_savings_inr_per_month": 280000,
-        "mode": "scripted_fallback"
+        "mode": "memory_reuse"
       }
     ],
     "failed_negotiations": [
       {
         "route": "Bengaluru Thermal Power Station -> Deccan Cement Works",
         "material": "fly_ash",
-        "reason": "Seller minimum (INR 1600/ton) exceeds buyer maximum (INR 1472/ton)."
+        "reason": "Agreement declared but terms were not valid structured data."
       }
     ],
     "notes": {

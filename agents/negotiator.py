@@ -51,9 +51,13 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
-DEMO_MODE = os.environ.get("ANTHROPIC_API_KEY") is None
-MODEL = os.environ.get("SYMBIOLOOP_MODEL", "claude-sonnet-4-6")
+from dotenv import load_dotenv
+from groq import Groq
 
+load_dotenv()
+
+DEMO_MODE = os.environ.get("GROQ_API_KEY") is None
+MODEL = os.environ.get("SYMBIOLOOP_MODEL", "openai/gpt-oss-20b")
 # Each "round" is one supplier turn + one buyer turn (up to 2 LLM calls), so
 # MAX_ROUNDS=4 means up to 8 LLM calls total, not 4. Named MAX_ROUNDS (rather
 # than MAX_TURNS) precisely to avoid that ambiguity.
@@ -86,8 +90,7 @@ _DAYS_PER_MONTH = 30
 
 
 def _client():
-    from anthropic import Anthropic
-    return Anthropic()
+    return Groq(api_key=os.environ["GROQ_API_KEY"])
 
 
 def _match_id(match: dict) -> str:
@@ -311,13 +314,19 @@ negotiation attempt."""
 
 
 def _call_llm(client, system_prompt: str, history: list[dict]) -> str:
-    resp = client.messages.create(
+    messages = [
+        {"role": "system", "content": system_prompt},
+        *history,
+    ]
+
+    resp = client.chat.completions.create(
         model=MODEL,
+        messages=messages,
         max_tokens=300,
-        system=system_prompt,
-        messages=history,
+        temperature=0.3,
     )
-    return resp.content[0].text.strip()
+
+    return resp.choices[0].message.content.strip()
 
 
 def _parse_agreement_json(raw: str):
