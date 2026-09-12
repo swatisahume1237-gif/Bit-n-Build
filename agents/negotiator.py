@@ -48,6 +48,7 @@ Design notes:
 import os
 import re
 import json
+import time
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
@@ -264,9 +265,13 @@ Your hard constraints (do not violate these):
 - Standard transport-cost split for this route: {preferred_split} (seller/buyer) - you may deviate
   only within your own maximum share limit above.{hint_line}
 Your goals, in priority order:
+Your goals, in priority order:
 1. Secure a recurring monthly offtake agreement (avoid one-off deals).
 2. Get as close to your preferred price as possible - never accept below your minimum.
 3. Minimise your logistics burden - prefer buyer picks up or shares transport cost.
+Do NOT declare AGREEMENT on your very first message. Your first message is only
+an opening offer. Only propose AGREEMENT after at least one round of counter-offers
+has been exchanged with the other party.
 Negotiate directly and concisely (2-4 sentences per turn).
 If you and the buyer reach agreement, end your final message with a line starting exactly with
 "AGREEMENT:" followed by ONLY a compact JSON object with keys: price_inr_per_ton (number),
@@ -292,9 +297,13 @@ Your hard constraints (do not violate these):
 - Standard transport-cost split for this route: {preferred_split} (seller/buyer) - you may deviate
   only within your own maximum share limit above.{hint_line}
 Your goals, in priority order:
+Your goals, in priority order:
 1. Lock in a reliable recurring supply to replace virgin raw material purchases.
 2. Negotiate as far below your maximum price as possible.
 3. Keep transport distance/cost manageable (this route is {match['distance_km']} km).
+Do NOT declare AGREEMENT on your very first message. Your first message is only
+a counter-offer. Only propose AGREEMENT after at least one round of counter-offers
+has been exchanged with the other party.
 Negotiate directly and concisely (2-4 sentences per turn).
 If you and the supplier reach agreement, end your final message with a line starting exactly with
 "AGREEMENT:" followed by ONLY a compact JSON object with keys: price_inr_per_ton (number),
@@ -313,20 +322,32 @@ one-sentence reason. Do not propose new counter-terms here - a plain rejection e
 negotiation attempt."""
 
 
-def _call_llm(client, system_prompt: str, history: list[dict]) -> str:
+def _call_llm(client, system_prompt: str, history: list[dict], retries: int = 3) -> str:
     messages = [
         {"role": "system", "content": system_prompt},
         *history,
     ]
 
-    resp = client.chat.completions.create(
-        model=MODEL,
-        messages=messages,
-        max_tokens=300,
-        temperature=0.3,
-    )
+    last_error = None
+    for attempt in range(retries):
+        try:
+            resp = client.chat.completions.create(
+                model=MODEL,
+                messages=messages,
+                max_tokens=900,
+                temperature=0.3,
+                reasoning_effort="medium",
+            )
+            content = resp.choices[0].message.content.strip()
+            if not content:
+                raise ValueError("Model returned empty content (likely spent full budget on hidden reasoning)")
+            return resp.choices[0].message.content.strip()
+        except Exception as e:
+            last_error = e
+            print(f"[NegotiationAgent] LLM call failed (attempt {attempt+1}/{retries}): {e}")
+            time.sleep(1)
 
-    return resp.choices[0].message.content.strip()
+    raise last_error
 
 
 def _parse_agreement_json(raw: str):
@@ -501,84 +522,97 @@ class NegotiationAgent:
         if DEMO_MODE:
             result = _scripted_negotiation(match, seller_terms, buyer_terms, anchor_hint)
         else:
-            client = _client()
-            supplier_sys = _supplier_system_prompt(match, seller_terms, anchor_hint, preferred_split)
-            buyer_sys = _buyer_system_prompt(match, buyer_terms, anchor_hint, preferred_split)
+            try:
+                client = _client()
+                supplier_sys = _supplier_system_prompt(match, seller_terms, anchor_hint, preferred_split)
+                buyer_sys = _buyer_system_prompt(match, buyer_terms, anchor_hint, preferred_split)
 
-            supplier_history, buyer_history = [], []
-            transcript = []
-            structured = None
-            status = "failed"
-            failure_reason = "No agreement reached within round limit."
-            opening = "Please open the negotiation with your opening offer."
-            supplier_history.append({"role": "user", "content": opening})
+                supplier_history, buyer_history = [], []
+                transcript = []
+                structured = None
+                status = "failed"
+                failure_reason = "No agreement reached within round limit."
+                opening = "Please open the negotiation with your opening offer."
+                supplier_history.append({"role": "user", "content": opening})
 
-            for _round in range(MAX_ROUNDS):
-                supplier_msg = _call_llm(client, supplier_sys, supplier_history)
-                transcript.append({"speaker": "supplier", "text": supplier_msg})
-                supplier_history.append({"role": "assistant", "content": supplier_msg})
-                buyer_history.append({"role": "user", "content": supplier_msg})
-
-                if "AGREEMENT:" in supplier_msg:
-                    proposal = _parse_agreement_json(supplier_msg.split("AGREEMENT:", 1)[1])
-                    if not proposal:
-                        status, failure_reason = "failed", "Agreement declared but terms were not valid structured data."
-                        break
-                    valid, reason = validate_agreement(proposal, match, seller_terms, buyer_terms)
-                    if not valid:
-                        status, failure_reason = "failed", f"Proposed agreement violated constraints: {reason}"
-                        break
-                    confirmed, reason = _seek_confirmation(
-                        client, buyer_sys, buyer_history, proposal, transcript, proposer_speaker="supplier"
+                for _round in range(MAX_ROUNDS):
+                    supplier_msg = _call_llm(client, supplier_sys, supplier_history)
+                    transcript.append({"speaker": "supplier", "text": supplier_msg})
+                    supplier_history.append({"role": "assistant", "content": supplier_msg})
+                    round_reminder = (
+                        f"\n\n[Round {_round + 1} of {MAX_ROUNDS}] Move meaningfully toward the other party's "
+                        f"last offer rather than repeating your previous position — static or regressing offers "
+                        f"waste rounds. If this is the final round and the remaining gap is small, prioritize "
+                        f"closing the deal at a fair point within your own limits over risking NO_DEAL."
                     )
-                    supplier_history.append({"role": "user", "content": transcript[-1]["text"]})
-                    if confirmed:
-                        structured, status = proposal, "agreed"
-                    else:
-                        status, failure_reason = "failed", reason
-                    break
-                if "NO_DEAL:" in supplier_msg:
-                    failure_reason = supplier_msg.split("NO_DEAL:", 1)[1].strip()
-                    status = "failed"
-                    break
-
-                buyer_msg = _call_llm(client, buyer_sys, buyer_history)
-                transcript.append({"speaker": "buyer", "text": buyer_msg})
-                buyer_history.append({"role": "assistant", "content": buyer_msg})
-                supplier_history.append({"role": "user", "content": buyer_msg})
-
-                if "AGREEMENT:" in buyer_msg:
-                    proposal = _parse_agreement_json(buyer_msg.split("AGREEMENT:", 1)[1])
-                    if not proposal:
-                        status, failure_reason = "failed", "Agreement declared but terms were not valid structured data."
+                    buyer_history.append({"role": "user", "content": supplier_msg + round_reminder})
+                    if "AGREEMENT:" in supplier_msg:
+                        proposal = _parse_agreement_json(supplier_msg.split("AGREEMENT:", 1)[1])
+                        if not proposal:
+                            status, failure_reason = "failed", "Agreement declared but terms were not valid structured data."
+                            break
+                        valid, reason = validate_agreement(proposal, match, seller_terms, buyer_terms)
+                        if not valid:
+                            status, failure_reason = "failed", f"Proposed agreement violated constraints: {reason}"
+                            break
+                        confirmed, reason = _seek_confirmation(
+                            client, buyer_sys, buyer_history, proposal, transcript, proposer_speaker="supplier"
+                        )
+                        supplier_history.append({"role": "user", "content": transcript[-1]["text"]})
+                        if confirmed:
+                            structured, status = proposal, "agreed"
+                        else:
+                            status, failure_reason = "failed", reason
                         break
-                    valid, reason = validate_agreement(proposal, match, seller_terms, buyer_terms)
-                    if not valid:
-                        status, failure_reason = "failed", f"Proposed agreement violated constraints: {reason}"
+                    if "NO_DEAL:" in supplier_msg:
+                        failure_reason = supplier_msg.split("NO_DEAL:", 1)[1].strip()
+                        status = "failed"
                         break
-                    confirmed, reason = _seek_confirmation(
-                        client, supplier_sys, supplier_history, proposal, transcript, proposer_speaker="buyer"
-                    )
-                    buyer_history.append({"role": "user", "content": transcript[-1]["text"]})
-                    if confirmed:
-                        structured, status = proposal, "agreed"
-                    else:
-                        status, failure_reason = "failed", reason
-                    break
-                if "NO_DEAL:" in buyer_msg:
-                    failure_reason = buyer_msg.split("NO_DEAL:", 1)[1].strip()
-                    status = "failed"
-                    break
 
-            result = {
-                "transcript": transcript,
-                "status": status,
-                "mode": "live_llm",
-            }
-            if status == "agreed" and structured:
-                result.update(structured)
-            else:
-                result["failure_reason"] = failure_reason
+                    buyer_msg = _call_llm(client, buyer_sys, buyer_history)
+                    transcript.append({"speaker": "buyer", "text": buyer_msg})
+                    buyer_history.append({"role": "assistant", "content": buyer_msg})
+                    supplier_history.append({"role": "user", "content": buyer_msg + round_reminder})
+
+                    if "AGREEMENT:" in buyer_msg:
+                        proposal = _parse_agreement_json(buyer_msg.split("AGREEMENT:", 1)[1])
+                        if not proposal:
+                            status, failure_reason = "failed", "Agreement declared but terms were not valid structured data."
+                            break
+                        valid, reason = validate_agreement(proposal, match, seller_terms, buyer_terms)
+                        if not valid:
+                            status, failure_reason = "failed", f"Proposed agreement violated constraints: {reason}"
+                            break
+                        confirmed, reason = _seek_confirmation(
+                            client, supplier_sys, supplier_history, proposal, transcript, proposer_speaker="buyer"
+                        )
+                        buyer_history.append({"role": "user", "content": transcript[-1]["text"]})
+                        if confirmed:
+                            structured, status = proposal, "agreed"
+                        else:
+                            status, failure_reason = "failed", reason
+                        break
+                    if "NO_DEAL:" in buyer_msg:
+                        failure_reason = buyer_msg.split("NO_DEAL:", 1)[1].strip()
+                        status = "failed"
+                        break
+
+                result = {
+                    "transcript": transcript,
+                    "status": status,
+                    "mode": "live_llm",
+                }
+                if status == "agreed" and structured:
+                    result.update(structured)
+                else:
+                    result["failure_reason"] = failure_reason
+            except Exception as e:
+                result = {
+                    "transcript": [],
+                    "status": "failed",
+                    "mode": "live_llm_error",
+                    "failure_reason": f"LLM provider error after retries: {e}",
+                }
 
         record = {
             "match_id": _match_id(match),

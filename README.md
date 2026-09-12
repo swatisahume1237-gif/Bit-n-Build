@@ -31,8 +31,14 @@ data/companies.json
         |
         v
 [4] Negotiation Agent    -> two LLM personas (supplier/buyer) autonomously negotiate
-        |                    price, volume, delivery terms over multiple turns;
-        |                    persists every negotiation to output/negotiation_log.json (memory)
+        |                    within each side's real commercial constraints (price floor/
+        |                    ceiling, volume, contract length, transport-cost share),
+        |                    over multiple rounds, and only reach a deal if a proposed
+        |                    AGREEMENT is (a) valid structured JSON, (b) re-validated
+        |                    against BOTH sides' hard constraints, and (c) explicitly
+        |                    CONFIRMED by the counterparty — not just declared by one side.
+        |                    Checks long-term memory first for a still-active prior deal
+        |                    between the same pair before negotiating from scratch.
         v
 [5] Reporting Agent      -> aggregates into a sustainability impact report
         |
@@ -49,26 +55,51 @@ negotiation step, rather than negotiating every candidate pair.
 - **Multi-step planning**: orchestrator selects which matches are worth negotiating
   based on the logistics agent's ranking, before spending any LLM budget.
 - **Tool use**: agents call real computation (haversine distance, cost/emissions
-  formulas) that the LLM does not do itself — the LLM only reasons over agent output.
-- **Multi-turn autonomous negotiation**: two independent LLM personas with different,
-  partially conflicting goals and no visibility into each other's system prompt
-  negotiate to a structured agreement, without a human in the loop.
-- **Memory**: every negotiation is appended to `output/negotiation_log.json`,
-  giving the system a persistent record it could query in future runs
-  (e.g. "don't re-negotiate a route we already have a live 12-month deal on").
-- **Explainability / safety**: hazard compatibility is enforced as a hard rule
-  before any LLM step — the system never reasons its way into an unsafe match.
+  formulas, transport-split optimization) that the LLM does not do itself — the LLM
+  only reasons and bargains over agent-supplied constraints.
+- **Multi-turn autonomous negotiation within real constraints**: two independent LLM
+  personas, each seeing only its own side's price floor/ceiling, volume, and contract
+  preferences (never the other side's), negotiate to a proposal — with no human in
+  the loop.
+- **Deals are earned, not assumed**: an `AGREEMENT:` from one side is only a proposal.
+  It's re-validated against both sides' hard constraints and requires an explicit
+  `CONFIRMED` from the counterparty before it's recorded as a real deal. If the two
+  sides' ranges genuinely don't overlap, the negotiation is allowed to fail —
+  see `output/negotiation_log.json` for a real example (fly_ash: seller minimum
+  ₹1,600/ton vs buyer maximum ₹1,472/ton — correctly negotiated to `NO_DEAL` by both
+  the scripted fallback and the live LLM negotiation, independently, over 4 full
+  rounds).
+- **Long-term memory**: every completed negotiation is persisted to
+  `output/negotiation_log.json`. Before negotiating a pair again, the agent checks
+  for a still-active prior agreement (tracked via `contract_months` -> `expires_at`)
+  and reuses it instead of renegotiating from scratch — and also passes the most
+  recent historical price for either party as an anchor hint on a fresh negotiation,
+  so the system genuinely uses its own history rather than just archiving it.
+- **Explainability / safety**: hazard compatibility (matchmaker.py) is enforced as a
+  hard rule before any LLM step — the system never reasons its way into an unsafe
+  match.
+- **Reliability under real API conditions**: the negotiation agent retries on
+  transient LLM provider errors and degrades to a clearly-labeled failed record
+  (rather than crashing the whole pipeline run) if a provider error persists — so one
+  bad API call doesn't take down every other match's negotiation.
 
 ## Setup
 
 ```bash
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=your_key_here   # optional — see below
+```
+
+Create a `.env` file in the project root (this file is gitignored — never commit it):
+```
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+Then run:
+```bash
 python orchestrator.py
 ```
 
-Then open `dashboard/index.html` via a local server (needed for the JSON fetch):
-
+Open the dashboard via a local server (needed for the JSON fetch):
 ```bash
 cd dashboard
 python -m http.server 8000
@@ -77,10 +108,30 @@ python -m http.server 8000
 
 ### Demo mode (no API key required)
 
-If `ANTHROPIC_API_KEY` is not set, `negotiator.py` automatically falls back to a
-deterministic scripted negotiation so the full pipeline and dashboard still run
-end-to-end. This is a deliberate reliability choice — do not rely on live network/API
-calls working flawlessly during a live demo.
+If `GROQ_API_KEY` is not set, `negotiator.py` automatically falls back to a
+deterministic negotiation that still respects each side's real price/volume/duration
+constraints (not a single hard-coded price) — so the pipeline and dashboard still run
+end-to-end, and can still genuinely fail if a pair's constraints don't overlap. This
+is a deliberate reliability choice: don't rely on live network/API calls working
+flawlessly during a live demo.
+
+### Live LLM negotiation
+
+Get a key from https://console.groq.com. The negotiation agent uses Groq's hosted
+`openai/gpt-oss-20b` (OpenAI's open-weight reasoning model) via the official `groq`
+Python SDK. Note: **Groq** (the inference API company, groq.com) is a different
+company from xAI's **Grok** model — same-sounding name, unrelated API.
+
+`gpt-oss-20b` is a reasoning model — it spends part of its token budget on hidden
+internal reasoning before producing its visible reply. We explicitly set
+`reasoning_effort="low"` and a generous `max_tokens` to avoid truncating the model's
+response mid-JSON, which we hit during development (see commit history).
+
+**Known provider-side issue**: Groq's `gpt-oss` models intermittently throw
+`"Tool choice is none, but model called a tool"` even when no tools are configured —
+a documented, acknowledged bug on Groq's side, not something in this codebase. The
+negotiation agent retries transient LLM errors automatically and records a graceful
+failure (rather than crashing) if the error persists past the retry budget.
 
 ## Data
 
@@ -99,9 +150,12 @@ prototype — flagged transparently rather than presented as live data.
   for production use.
 - Matching is rule-based (category + hazard + quality) rather than semantic/embedding
   based, by design: safety-critical routing needs to be auditable, not a black box.
+- Negotiation outcomes are genuinely earned within each side's stated commercial
+  constraints, not guaranteed — some matches will correctly fail if price ranges
+  don't overlap, which the demo should show as a feature, not hide as a failure.
 
 ## Next steps if time allows
 
 - Swap static dataset for a CSV upload flow so any company can add its own profile.
-- Add a "renegotiate" trigger reading from `negotiation_log.json` memory.
 - Real freight-cost API integration.
+- Surface memory-reuse events (existing active contracts) in the dashboard.
